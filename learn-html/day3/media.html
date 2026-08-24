@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko-KR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>미디어 태그를 알 아~보자!</title>
+    </head>
+    <body>
+        <img
+            width="500"
+            src="./assets/Pc_2.png"
+            alt="계곡에서 함께 빨래를 하는 토끼와 강아지 캐릭터"
+            loading="lazy"
+        />
+
+        <hr />
+
+        <picture>
+            <source media="(max-width: 600px)" srcset="./assets/ako.png" />
+            <source media="(max-width: 1100px)" srcset="./assets/ako.png" />
+            <img width="200px" src="./assets/Pc_2.png" alt="이하 생략..." />
+        </picture>
+
+        <video
+            controls
+            width="640"
+            poster="./images/thumbnail.jpg"
+            playsinline
+            autoplay
+            muted
+            loop
+        >
+            <source src="./assets/720p.mp4" type="video/mp4" />
+        </video>
+
+        <hr />
+
+        <figure>
+            <img width="300px" src="./assets/ako.png" alt="귀여운 게 잔뜩" />
+            <figcaption>뭔가 그냥 다채로운 화면</figcaption>
+        </figure>
+
+        <hr />
+
+        <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/YxT3YV2xCi4?si=a36Pd_tyMtUyZYfW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+            "
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+
+        <hr />
+
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x35689cb2e130a205%3A0x848a59567fdac159!2z7Yq466CI7J20642U7IqkIO2ZgOyEuOydvCDtgbTrn70g7JaR7IKw7KCQ!5e0!3m2!1sko!2skr!4v1787290446847!5m2!1sko!2skr"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+    </body>
+</html>

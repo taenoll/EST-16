@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML 기초 강의 신청</title>
+  </head>
+
+  <body>
+    <header>
+      <a href="#main-content">본문 바로가기</a>
+
+      <h1>신선교수님의 온라인 클래스</h1>
+
+      <nav aria-label="주요 메뉴">
+        <ul>
+          <li><a href="#introduction">강의 소개</a></li>
+          <li><a href="#curriculum">커리큘럼</a></li>
+          <li><a href="#preview">미리보기</a></li>
+          <li><a href="#apply">수강 신청</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="introduction">
+        <h2>강의 소개</h2>
+        <figure>
+          <img
+            src="./assets/class.png"
+            width="600"
+            alt="범쌤의 설명을 들으며 HTML을 공부하는 아기 수강생들"
+          />
+          <figcaption>
+            수강생들의 뜨거운 학구열과 교수님의 더 뜨거운 열강
+          </figcaption>
+        </figure>
+        <p>
+          HTML의 기본 구조부터 시맨틱 태그, 미디어 태그와 폼까지 차근차근
+          배워보는 기초 강의입니다.
+        </p>
+      </section>
+
+      <section id="curriculum">
+        <h2>커리큘럼</h2>
+
+        <ol>
+          <li>HTML 문서의 기본 구조</li>
+          <li>텍스트와 목록 태그</li>
+          <li>링크와 이미지</li>
+          <li>입력 양식</li>
+          <li>미디어와 웹 접근성</li>
+        </ol>
+        <!-- 학습 순서가 중요하므로 순서가 있는 목록(ol)을 사용 -->
+      </section>
+
+      <section id="preview">
+        <h2>강의 미리보기</h2>
+
+        <video width="600" controls muted>
+          <source src="./assets/game.mp4" type="video/mp4" />
+          현재 사용 중인 브라우저에서는 해당 영상을 재생할 수 없습니다.
+        </video>
+
+        <p>강의가 어떤 식으로 이루어지는지 미리 확인해보세요!</p>
+      </section>
+
+      <section id="apply">
+        <h2>수강 신청</h2>
+        <p>
+          <strong
+            >(필수)로 표시된 항목은 반드시 입력하거나 선택해야 합니다.</strong
+          >
+        </p>
+
+        <form method="post">
+          <fieldset>
+            <legend>신청자 정보</legend>
+
+            <div>
+              <label for="name">이름 (필수)</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="email">이메일 (필수)</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                aria-describedby="email-description"
+                required
+              />
+              <p id="email-description">
+                수강 안내를 받을 이메일 주소를 입력해 주세요.
+              </p>
+            </div>
+            <!-- aria-describedby로 이메일 입력창과 추가 안내 문구를 연결 -->
+
+            <div>
+              <label for="tel">휴대전화 번호 (선택)</label>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" />
+            </div>
+
+            <!-- placeholder는 label을 대신할 수 없으므로 모든 입력창에 label을 제공 -->
+          </fieldset>
+
+          <fieldset>
+            <legend>학습 경험</legend>
+
+            <p>HTML을 공부한 경험이 있나요?</p>
+
+            <div>
+              <input
+                type="radio"
+                id="experience-beginner"
+                name="experience"
+                value="beginner"
+                required
+              />
+              <label for="experience-beginner">처음 배웁니다</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="experience-basic"
+                name="experience"
+                value="basic"
+              />
+              <label for="experience-basic">조금 배웠습니다</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="experience-project"
+                name="experience"
+                value="project"
+              />
+              <label for="experience-project">프로젝트 경험이 있습니다</label>
+            </div>
+            <!-- 같은 질문의 라디오 버튼은 동일한 name을 사용하고 value로 선택값을 구분 -->
+          </fieldset>
+
+          <fieldset>
+            <legend>관심 있는 학습 주제</legend>
+
+            <div>
+              <input
+                type="checkbox"
+                id="topic-html"
+                name="topics"
+                value="html"
+              />
+              <label for="topic-html">HTML</label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                id="topic-accessibility"
+                name="topics"
+                value="accessibility"
+              />
+              <label for="topic-accessibility">웹 접근성</label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                id="topic-form"
+                name="topics"
+                value="form"
+              />
+              <label for="topic-form">입력 양식</label>
+            </div>
+            <!-- checkbox는 같은 name을 사용해도 여러 항목을 동시에 선택할 수 있음 -->
+          </fieldset>
+
+          <div>
+            <label for="message">강사에게 남길 말</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              aria-describedby="message-description"
+            ></textarea>
+
+            <p id="message-description">
+              수업에서 궁금한 내용이 있다면 작성해 주세요.
+            </p>
+          </div>
+          <!-- aria-describedby로 textarea와 추가 안내 문구를 연결 -->
+
+          <div>
+            <input type="checkbox" id="privacy" name="privacy" required />
+            <label for="privacy">
+              개인정보 수집 및 이용에 동의합니다. (필수)
+            </label>
+          </div>
+
+          <button type="submit">수강 신청하기</button>
+          <button type="reset">다시 작성하기</button>
+        </form>
+      </section>
+
+      <section id="location">
+        <h2>오프라인 교육장 위치</h2>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x357ca5a7250efe81%3A0x433df2c1fec03b98!2z66Gv642w7JuU65Oc!5e0!3m2!1sko!2skr!4v1787505231887!5m2!1sko!2skr"
+          width="600"
+          height="450"
+          title="오프라인 교육장 위치 지도"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <!-- style="border: 0"는 css를 사용하지 않으므로 제외 -->
+        <!-- 제가 롯데월드가 가고 싶어서 그냥 넣었어요... -->
+
+        <address>
+          교육장 주소: 신선시 HTML구 시맨틱로<br />
+          전화:
+          <a href="tel:+821012345678">010-1234-5678</a><br />
+          이메일:
+          <a href="mailto:>hello@example.com">hello@example.com</a>
+        </address>
+      </section>
+    </main>
+
+    <footer>
+      <small>Copyright 2026 범쌤 온라인 클래스</small>
+    </footer>
+  </body>
+</html>
