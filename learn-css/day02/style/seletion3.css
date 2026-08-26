@@ -1,0 +1,32 @@
+/* 16. 마우스를 올렸을 때 */
+.course-link:hover {
+  color: #cc3b3b;
+}
+
+/* 17. 키보드 포커스를 받았을 때 */
+.apply-button:focus {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* 18. 체크된 상태 */
+input[type="checkbox"]:checked {
+  accent-color: #3371f7;
+}
+
+/* 19. 비활성화된 상태 */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* 그냥 .5라고 해도 동일하게 찍힘*/
+
+/* 20. 가상 요소 */
+.notice::before {
+  content: "📢 ";
+}
+/* content가 들어가 있어야 글자가 보임!! */
+
+.external::after {
+  content: "↗";
+}

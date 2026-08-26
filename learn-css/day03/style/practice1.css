@@ -1,0 +1,83 @@
+:root {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #eeebe6;
+  color: #221e1a;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.profile {
+  width: 90%;
+  max-width: 720px;
+  margin: 3rem auto;
+  background-color: #fff;
+  color: #1f2937;
+  padding: 2.5rem 3rem;
+  border: 1px solid #dfdbdb;
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(48, 45, 41, 0.08);
+  text-align: center;
+}
+
+.profile-image {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  border: 3px solid #371f1f;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+.profile-title {
+  margin: 0 0 1rem;
+  color: #5c4e3c;
+  font-size: 2rem;
+}
+
+.profile-description {
+  margin: 0 0 2rem;
+  color: #74777e;
+  font-size: 1rem;
+}
+
+.profile-section {
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    color: #5c4e3c;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.profile-link {
+  display: inline-block;
+  /* 인라인 속성과 블럭 속성을 다 가지도록 한다 */
+  padding: 0.9em 1.4em;
+  background-color: #cf865c;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #57617e;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 4px;
+  }
+}

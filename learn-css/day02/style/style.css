@@ -1,0 +1,85 @@
+/* 부모는 크기 설정이 없을 경우 자식들로부터 크기를 상속받는다. */
+.box01 {
+  border: 2px solid black;
+  font-size: 30px;
+  color: rgb(236, 157, 10);
+  /* height: 396px; */
+}
+
+.box01 p {
+  background-color: green;
+  width: 300px;
+  height: 300px;
+}
+
+a {
+  color: inherit;
+}
+
+/* 
+<img 태그>
+- 부모에게 크기를 상속한다.
+- 사용자에게 정보 제공을 위해서 (alt)
+
+background-image
+- 크기에 관여하지 않는다.
+- 정보 제공에 관여하지 않는다.
+- 이미지가 부모의 크기보다 작을 경우 이미지를 전체 반복
+*/
+
+.box03 {
+  height: 500px;
+  /* background-repeat: repeat-x; */
+  /* background-repeat: repeat-y; */
+  /* background-repeat: no-repeat; */
+  /* background-position: 10% 10%; */
+  /* background-image: linear-gradient(30deg, white, yellow, orange, orangered, red, rgb(71, 0, 0),black); */
+  /* background-image: radial-gradient(circle, white, yellow, orange, orangered, red, rgb(71, 0, 0),black); */
+  border: 1px solid gray;
+  background-image: linear-gradient(30deg, white, yellow, lightpink);
+  border-radius: 8px 16px 24px 32px;
+  border-radius: 50%;
+}
+
+@font-face {
+  font-family: 'pretendard';
+  /* font-family 이름을 지정하는 것 */
+  src: url(../assets/font/PretendardVariable.ttf) format(truetype);
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  /* swap은 폰트 불러오기 전에 가지고 있는 기본 폰트를 사용하라는 뜻 */
+}
+
+.box04 {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'pretendard', sans-serif;
+  /* font-family 지정된 이름을 사용하는 것 */
+  font-weight: 300;
+  line-height: 1.5;
+  /* text-align: center; */
+  text-decoration: underline;
+  width: 240px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  box-shadow: 0 0 0 0 #000;
+}
+
+.box05 {
+  text-shadow: 2px 2px 4px #000;
+  background-color: salmon;
+  width: 80vw;
+
+  h2 {
+    color: white;
+    font-size: clamp(30px, 5vw, 100px);
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}

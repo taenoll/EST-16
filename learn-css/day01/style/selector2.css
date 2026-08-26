@@ -1,0 +1,33 @@
+/* 06. 자식 선택자 */
+.menu > li {
+  color: #2563eb;
+}
+
+.menu > li li{
+  color: black;
+}
+
+/* 07. 인접 형제 선택자 */
+h2 + p {
+  font-weight: 700;
+}
+
+/* 08. 일반 형제 선택자 */
+h2 ~ p {
+  color: #7c3aed;
+}
+
+/* 09. 속성 존재 선택자 */
+input[required] {
+  border: 1px solid #ef4444;
+}
+
+/* 10. 속성값 선택자 */
+a[href^="https"] {
+  color: greenyellow;
+}
+
+a[href$=".pdf"] {
+  color: aqua;
+  font-weight: 700;
+}

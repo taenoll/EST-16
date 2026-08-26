@@ -1,0 +1,102 @@
+h1 {
+  color: aqua;
+  font-size: 30px;
+  text-align: center;
+}
+
+.warning {
+  color: red;
+}
+
+#main-header {
+  background-color: lightpink;
+}
+
+ul {
+  background-color: yellow;
+}
+
+.deep-menu {
+  background-color: rgb(160, 182, 34);
+}
+
+.deep-menu li {
+  background-color: cadetblue;
+}
+
+/* 클래스 딥메뉴 안에 있는 친자식 li만 선택 */
+.deep-menu > li {
+  background-color: hotpink;
+}
+
+/* 어바웃을 선택하여 글자 색을 흰색(FFFFFF)로 변경 */
+
+.deep-menu > li > a {
+  color: white;
+}
+
+.anchor {
+  color: tomato;
+}
+
+.sibling h2 ~ p {
+  background-color: orange;
+}
+
+.deep-menu,
+.sibling {
+  background-color: salmon;
+}
+
+button:not(.primary) {
+  background-color: red;
+}
+
+input[type='text'] {
+  border: 1px solid #ccc;
+}
+
+a[target='_blank'] {
+  color: orange;
+}
+
+.pseudo{
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+}
+
+.pseudo:hover{
+  background-color: tomato;
+}
+
+/* pseudo 마우스를 올렸을 때 */
+.pseudo a:hover{
+  color: green;
+}
+/* pseudo 마우스를 올렸을 때 a의 값이 변경*/
+
+.pseudo:hover > a{
+  color: green;
+}
+
+.pseudo > a:focus{
+  outline: 2px solid blue;
+}
+
+.pseudo > ul > li {
+  background-color: hotpink;
+}
+
+.pseudo > ul > li:first-child(3),
+.pseudo > ul > li:first-child(6) {
+   background-color: violet; 
+  }
+
+  .pseudo-element > h2::before{
+    content: '☠️';
+  }
+  
+  .pseudo-element > h2::after{
+    content: '🌸';
+  }
