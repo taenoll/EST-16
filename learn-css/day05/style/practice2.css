@@ -1,0 +1,146 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  background-color: #fdfdfd;
+  border-bottom: 1px solid #ddd;
+
+  .header-inner {
+    max-width: 1200px;
+    min-height: 70px;
+    margin-inline: auto;
+    padding-inline: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rebeccapurple;
+  }
+
+  .navigation {
+    display: flex;
+    gap: 1.5rem;
+    font-weight: 700;
+
+    a {
+      display: block;
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+.main-content {
+  background-color: #f5f7fa;
+  padding: 64px 20px;
+  padding-inline: 2rem;
+}
+
+#courses {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+
+  .eyebrow,
+  .more-link {
+    color: dodgerblue;
+    font-weight: bold;
+  }
+
+  /* .eyebrow {
+    margin-bottom: 8px;
+  } */
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+
+.course-card {
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  .card-thumbnail {
+  position: relative;
+
+  img {
+    /* display: block; */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    padding: 6px 10px;
+    border-radius: 999px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 700;
+  }
+}
+}
+
+
+
+.card-content{
+  /* flex: 1; */
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .category{
+    color: dodgerblue;
+    font-weight: bold;
+  }
+
+  h2{
+
+  }
+
+}
+
+.card-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .price{
+
+  }
+
+  /.course-link{
+    border: 1px solid gray;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.5rem;
+  }
+}

@@ -1,0 +1,35 @@
+body {
+  min-height: 100dvh;
+  /* 지금 바디도 가진 높이값이 없어서 자식에게 높이를 상속받고 있음! */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 600px;
+  height: 600px;
+  /* margin-inline: auto; */
+  border: 1px solid red;
+  border-radius: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  /* gap: 10px; */
+  padding: 10px;
+}
+
+.box {
+  width: 250px;
+  height: 250px;
+  background-color: pink;
+  border-radius: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+}

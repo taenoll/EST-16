@@ -1,0 +1,25 @@
+.box01 {
+  width: 200px;
+  height: 200px;
+  background-color: green;
+  /* margin: 10px 20px; */
+  /* margin-inline: 20px;
+  margin-block: 20px; */
+  padding: 20px;
+  /* padding-inline: 10px;
+  padding-block: 50px; */
+}
+
+.all-center-box {
+  width: 200px;
+  height: 200px;
+  background-color: tomato;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin-left: -100px; */
+  /* 이미 left를 썼다면 margin도 left만 써야 한다 */
+  /* margin-top: -100px; */
+  /* top도 마찬가지 */
+}

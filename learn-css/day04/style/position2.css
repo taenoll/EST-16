@@ -1,0 +1,52 @@
+.white {
+  height: 1000px;
+}
+
+.gray {
+  position: relative;
+  height: 1000px;
+  background-color: gray;
+}
+
+.green {
+  position: absolute;
+  width: 660px;
+  height: 450px;
+  background-color: #6bbe6b;
+
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .boxes-2-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 120px;
+    height: 120px;
+    background-color: #333;
+  }
+
+  .boxes-2-2 {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+
+    width: 120px;
+    height: 120px;
+    background-color: #333;
+  }
+}
+
+.boxes-2-3 {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 300px;
+  height: 200px;
+  background-color: #333;
+}

@@ -1,0 +1,43 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  max-width: 1000px;
+  min-height: 600px;
+  margin: 0 auto;
+}
+
+.main {
+  display: grid;
+  /* place-items: center; */
+  /* grid-template-rows: 100px 100px 300px 80px; */
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 600px;
+
+  .cards {
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: 2fr 1fr 1fr;
+    background-color: beige;
+  }
+
+  .contents {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background-color: #f1e3c7;
+  }
+}
+
+@media (max-width: 800px) {
+  /* .sidebar {
+    background-color: dodgerblue;
+  } */
+}
+
+.sidebar,
+.header,
+.card,
+.chart,
+.info,
+.footer {
+  border: 1px solid #8f8f8f;
+}

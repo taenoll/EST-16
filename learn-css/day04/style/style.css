@@ -1,0 +1,51 @@
+.boxes {
+  width: 200px;
+  height: 350px;
+  position: absolute;
+}
+
+.box01 {
+  background-color: orange;
+  left: 50px;
+  top: 50px;
+  z-index: 1;
+}
+
+.box02 {
+  background-color: lightblue;
+  left: 100px;
+  top: 100px;
+  z-index: 2;
+}
+
+.box03 {
+  background-color: greenyellow;
+  left: 150px;
+  top: 150px;
+  z-index: 3;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.178);
+  z-index: 4000;
+  backdrop-filter: blur(5px);
+}
+
+.contents-box {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  border-radius: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
