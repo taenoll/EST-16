@@ -89,9 +89,8 @@
   position: relative;
 
   img {
-    /* display: block; */
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
   }
 
@@ -104,7 +103,8 @@
     border-radius: 999px;
     background-color: dodgerblue;
     color: white;
-    font-weight: 700;
+    font-weight: bold;
+    font-size: 12px;
   }
 }
 }
@@ -112,7 +112,6 @@
 
 
 .card-content{
-  /* flex: 1; */
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -124,7 +123,12 @@
   }
 
   h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
+  .description{
+    color: #535353;
   }
 
 }
@@ -134,11 +138,8 @@
   justify-content: space-between;
   align-items: center;
 
-  .price{
 
-  }
-
-  /.course-link{
+  .course-link{
     border: 1px solid gray;
     padding: 0.3rem 0.7rem;
     border-radius: 0.5rem;

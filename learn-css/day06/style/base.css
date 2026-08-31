@@ -1,0 +1,42 @@
+/* 
+
+reset
+브라우저의 모든 속성 제거 (초기 기본값을 제거)
+
+base
+프로젝트의 기본값 설정
+
+
+*/
+
+
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Pretendard, Arial, sans-serif;
+  color: #222;
+  background: #fff;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* #app .card .button{
+  background-color: red;
+} */
+/* 아이디까지 120점이기 때문에 컴포넌츠를 제치고 이걸 적용하지만
+  현재 레이어 처리를 했기 때문에 레이어의 우선순위가 더 높은 
+  컴포넌츠가 적용이 된다. */
