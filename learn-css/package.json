@@ -1,0 +1,20 @@
+{
+  "name": "learn-css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+   "sass":"sass --watch day07/scss:day07/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taenoll/EST-16/tree/main/learn-css"
+  },
+  "keywords": [],
+  "author": "youjeong",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.103.1"
+  }
+}

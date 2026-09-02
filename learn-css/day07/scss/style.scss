@@ -1,0 +1,58 @@
+@use './abstracts/variables' as var;
+@use "./abstracts/mixins" as mix;
+
+@use "./components/button";
+@use "./components/course-card";
+
+.course-section{
+  padding: var.$spacing-4xl var.$spacing-lg;
+  
+  
+  &__inner{
+    width: min(100%, 100%);
+    margin: 0 auto;
+  }
+
+  &__header{
+    margin-bottom: var.$spacing-2xl;
+  }
+
+  &__eyebrow{
+    display: inline-block;
+    margin-bottom: var.$spacing-md;
+    color: var.$color-primary;
+    font-weight: 700;
+  }
+  
+  &__title{
+    margin: 0 0 var.$spacing-md;
+    font-size: clamp(var.$spacing-2xl, 5vw, var.$body-3xl);
+    letter-spacing: -0.04em;
+  }
+
+
+  &__description{
+    max-width: 600px;
+    margin: 0;
+    color: var.$color-muted;
+    font-size: var.$body-l;
+    line-height: 1.7;
+  }
+
+
+}
+
+body {
+  background-color: var.$color-background;
+  color: var.$color-text;
+}
+
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var.$spacing-lg;
+
+  @include mix.mobile {
+    grid-template-columns: 1fr;
+  }
+}
