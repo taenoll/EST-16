@@ -75,4 +75,20 @@ console.log(parseFloat(width) + 10+ 'px'); // 이렇게 하면 소수점도 산�
 /* 데이터 → 불리언 ---------------------------------------------------------- */
 
 // null, undefined, 0, NaN, ''
+
+console.clear();
+
+console.log(Boolean(null));
+console.log(Boolean(undefined));
+console.log(Boolean(0));
+console.log(Boolean(NaN));
+console.log(Boolean(''));
+
+
 // 위에 나열한 것 이외의 것들 
+
+console.log(Boolean('0'));
+console.log(Boolean(' '));
+console.log(Boolean( !!(-1)) );
+console.log(Boolean( !!({})) );
+console.log(Boolean( !! (false)));
