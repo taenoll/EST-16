@@ -12,4 +12,3 @@ const isNull = d => typeOf(d) === 'null';
 const isUndefined = d => typeOf(d) === 'undefined';
 const isFunction = d => typeOf(d) === 'function';
 const isMath = d => typeOf(d) === 'math';
- 
