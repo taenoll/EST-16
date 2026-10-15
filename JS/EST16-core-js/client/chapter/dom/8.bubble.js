@@ -12,20 +12,36 @@ const p = getNode('p')
 
 
 
-section.addEventListener('click', (e) => {
-  console.log(e.target, e.currentTarget, this);
-});
+section.addEventListener('click',(e) => {
 
-// article.addEventListener('click',()=>{
-//   console.log('article clicked');
+  console.log( e.target, e.currentTarget, this );
+  
+  
+  console.log('%c section','color:dodgerblue');
+})
+
+// article.addEventListener('click',(e)=>{
+//   e.stopPropagation();
+//   console.log('%c article','color:orange');
 // })
 
-// p.addEventListener('click',()=>{
-//   console.log('p clicked');
+// p.addEventListener('click',(e)=>{
+//   e.stopPropagation();
+//   console.log('%c p','color:hotpink');
 // })
 
 
-section.addEventListener('mouseenter')
+
+
+section.addEventListener('mouseenter',(e)=>{
+  e.currentTarget.style.background = 'black'
+  
+})
+
+section.addEventListener('mouseleave',(e)=>{
+  e.currentTarget.style.background = 'red'
+  
+})
 
 
 /* 캡처링 ----------------------------------------------------------------- */
