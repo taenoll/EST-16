@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 const data = [
   {
     id: 1,
@@ -23,9 +25,46 @@ const data = [
 
 
 
+// class Swiper{
+
+//   constructor(selector,options){
+//     document.querySelector(selector);
+//   }
+// }
+
+
+
+// class Swiper {
+
+//   constructor(selector){
+//     document.querySelector(selector);
+//   }
+
+// }
 
 
 
 
 
-
+const swiper = new Swiper('.swiper', {
+  loop: true,
+  speed: 2000,
+  parallax:!reduceMotion,
+  autoplay: {
+    delay: 3000,
+  },
+  pagination: {
+    el: '.pagination',
+    clickable:true,
+    bulletClass:'bullet',
+    bulletActiveClass:'is-active',
+    // type:'progressbar'
+    renderBullet: function (index, className){
+      return `
+        <span class=${className}>
+          <img src="./assets/part01/${data[index].src}" alt="${data[index].alt}"/>
+        </span>
+      `
+    }
+  },
+});

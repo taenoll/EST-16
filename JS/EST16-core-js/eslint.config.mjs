@@ -20,6 +20,11 @@ const customGlobals = {
   insertLast: 'readonly',
   throttle: 'readonly',
   debounce: 'readonly',
+
+  addClass: 'readonly',
+  removeClass: 'readonly',
+  toggleClass: 'readonly',
+  bindEvent: 'readonly',
 };
 
 export default defineConfig([
