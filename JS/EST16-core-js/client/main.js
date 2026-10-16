@@ -1,6 +1,20 @@
-import clearContent from "./lib/dom/clearContent.js";
-import { getNode as $, getNodes } from "./lib/dom/getNode.js";
-import { insertLast } from "./lib/dom/insert.js";
+import {
+  attr,
+  getNode as $,
+  addClass,
+  insertLast,
+  removeClass,
+  clearContent,
+} from "./lib/dom/index.js"
+
+
+
+// import clearContent from "./lib/dom/clearContent.js";
+// import { getNode as $, getNodes } from "./lib/dom/getNode.js";
+// import { insertLast } from "./lib/dom/insert.js";
+// import { attr } from "./lib/dom/attr.js";
+// import { addClass, removeClass } from "./lib/dom/css.js";
+// import { debounce } from "./lib/utils/debounce.js";
 
 
 // 1. input 선택하기
