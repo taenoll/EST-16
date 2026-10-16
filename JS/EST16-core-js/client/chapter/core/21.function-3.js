@@ -93,17 +93,17 @@ console.clear();
 
 // 일반 함수
 // this : 나를 호출한 대상을 this
-// constructor : 내장
+// constructor : 내장  (concise method는 제외)
 
 
 // 화살표 함수
 // this : 바인딩 하지 않음 => 상위 컨텍스트에서 찾음
-// constructor : 비내장 (성늘 최적화)
+// constructor : 비내장 (성능 최적화)
 
-
-// 객체의 메서드를 써야 하는 상황이 생긴다? 무조건 concise method 
-// -> 그 메서드 안에서 또 써야 하는 일이 생긴다면? 
-// -> 화살표 함수를 써라. (왜? this 때문에)
+ 
+// 객체의 메서드를 써야 하는 상황이 생긴다? 무조건 concise method  
+// -> 그 메서드 안에서 함수를 또 써야 하는 일이 생긴다?
+// 화살표 함수 쓰세요. (왜? this 때문에)
 
 
 
@@ -111,64 +111,101 @@ const obj = {
   name:'tiger',
   age:30,
   sayHi:function(){           // 일반 함수 메서드
-    console.log(this);
+
+
   },
   _sayHi:()=>{                // 화살표 함수 메서드
-    console.log(this);
+
+
   },
-  __sayHi() {
-    console.log(this);       // concise method
-  },
-  
+  __sayHi(){                  // concise method
+    
+
+    // const sayBye = () => {
+    //   console.log(this);
+    // }
+
+    const self = this;
+
+    function sayBye(){
+      
+      self.name
+      
+    }
+
+    sayBye();
+    
+  }
+
 }
+
+
 
 
 
 const user = {
   name: '이소망',
   total: 0,
-  grades: [30, 50, 90],
-
-  totalGrades() {
+  grades: [30,50,90],
+  totalGrades(){
     // this = user
 
     // this.grades.forEach((grade) => this.total += grade)
 
-    this.grades.forEach(function () {
-      this;
-    }, this);
-  },
-};
 
-user.totalGrades();     // 모든 점수 합
+    this.grades.forEach(function(){
+      this
+    },this)
 
-
-
-
-// 자바스크립트의 함수 양면의 얼굴
-// 1. normal function (일반 함수) => 리턴값을 명시
-// 2. constructor function (생성자 함수) => 무조건 객체를 리턴함.
-
-function sum(a, b) {
-  return a + b;
-}
-
-const result = new sum(1, 2);
-
-
-function createUser (){
-  return {
-    name : 'tiger',
-    age : 30
   }
 }
 
-const Sum = (a, b) => {
-  this.result = a + b;
-};
 
-new Sum(1, 2);
-// X!! 왜? Arrow Function에는 컨스트럭쳐가 없으니까
+
+user.totalGrades() // 모든 점수 합
+
+
+
+
+
+// prototype => constructor
+
+
+
+// 자바스크립트의 함수 양면의 얼굴 
+// 1. normal function (일반 함수) => 리턴값을 명시
+// 2. constructor function (생성자 함수) => 무조건 객체를 리턴함. 
+
+function Sum(a,b){
+  return a + b
+}
+
+// Sum()
+
+
+const result = new Sum(1,2);
+
+
+
+function createUser (){
+
+  return {
+    name:'tiger',
+    age:30
+  }
+}
+
+
+
+const arrow = (a,b) => {
+  return a + b
+}
+
+
+// new arrow(1,2) //3
+
+
+
 
 
 
@@ -177,21 +214,17 @@ new Sum(1, 2);
 /* 다음 함수를 작성해봅니다. -------------------------------------------------- */
 
 // pow(numeric: number, powerCount: number): number;
-// 참고로 2 ** 2 이런 것도 되고 반복문도 ㄱㄴ하고 Math에 있는 것도 있음 애로우로 만들자.
-let pow = (numeric, powerCount) => numeric ** powerCount; 
+let pow = (numeric, powerCount) => {
 
+  let total = 1;
 
-// 반복문으로
-/*
-function pow(numeric, powerCount) {
-  let result = 1;
-
-  for (let i = 0; i < powerCount; i++) {
-    result *= numeric;
+  for(let i = 0; i < powerCount; i++){
+    total = total * numeric
   }
 
-  return result;
+  return total
 }
+
 
 
 let _pow = (numeric, powerCount) => Array(powerCount).fill(null).reduce(acc => acc * numeric,1)
@@ -204,22 +237,42 @@ let __pow = (numeric, powerCount) => {
   },1)
 }
 
-*/
 
 
 
 // repeat(text: string, repeatCount: number): string;
-
 let repeat = (text, repeatCount) => {
+
   let result = '';
 
-  for (let i = 0; i < repeatCount; i++) {
+  for(let i = 0; i < repeatCount; i++){
     result += text;
   }
 
   return result;
-};
+
+}
+
+
+
 
 let _repeat = (text,repeatCount) =>  Array(repeatCount).fill(null).reduce(acc=> acc + text,'') 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

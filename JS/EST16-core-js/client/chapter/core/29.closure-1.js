@@ -6,56 +6,70 @@
 // - JavaScript의 매우 강력한 특성으로 독립적인 변수를 참조하는 함수를 말합니다.
 //   즉, 클로저에 정의된 함수는 그것이 작성된 환경을 '기억'합니다.
 
-// 클로저 한 줄 정리: 함수는 태어난 순간 자신이 태어난 환경을 기억합니다.
+// 함수는 태어난 순간 자신이 태어난 환경을 기억합니다.
 
 
 
 function sum(a,b){
-  return a + b;
+  return a + b
 }
 
 
 // const result = sum(1,2);
-// const result = sum;
+const result = sum;
 
-// currying function
-//  function first() {
-//   let x = 10;
-//   let y = 20;
 
-//   function second() {
-//     return x + y;
-//   }
+// currying function 
+function first(x){
+  // let x = 10;
+  // let y = 20;
 
-//   return second;
-// }
-
-function first(x) {
-  function second(y) {
+  function second(y){
     return x + y;
   }
 
-  return second;
+  return second
+
 }
+
 
 const a = first(10);
 
 a(20);
 
 
-function counter() {
+
+
+function counter(){
   let count = 0;
 
-  function inner() {
+  function inner (){
     return ++count;
   }
-
   return inner;
 }
+
 
 const c1 = counter();
 const c2 = counter();
 const c3 = counter();
+
+
+function multi(x){
+
+  return function (y){
+    return x * y;
+  }
+}
+
+
+
+const double = multi(2);
+const triple = multi(3);
+
+
+const _multi = (x) => (y) => x * y;
+
 
 
 

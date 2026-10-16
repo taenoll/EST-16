@@ -106,6 +106,28 @@ function animation(){
   
   h3.style.transform = `translate(0px,${++count}px) rotate(${++count}deg)`
   
-  requestAnimationFrame(animation)
+  const id = requestAnimationFrame(animation)
+
+
+  if(count >= 300){
+    cancelAnimationFrame(id);
+  }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,6 +4,9 @@
 
 // Array.isArray
 
+
+
+
 const people = [
   {
     id: 0,
@@ -71,6 +74,7 @@ const people = [
 people.forEach((user)=>{
   // console.log( user );
   
+  
 })
 
 
@@ -88,10 +92,7 @@ spans.forEach((span,index)=>{
   })
 })
 
-// 이벤트 바인딩을 해야 할 때 forEach를 사용하기도.
-// forEach가 인덱스를 반환하는 건 아니고, 
-// 콜백 함수의 두 번째 매개변수로 index를 전달해주는 것.
-// 아하! 그럼 중복되는 모든 이벤트 처리는 forEach로 하는구나!! 가 아니다.
+// 아하! 그럼 중복되는 모든 이벤트 처리는 forEach로 하는구나!! 가 아닙니다.
 // 이벤트 위임 (event delegation)
 
 // 이벤트 바인딩 
@@ -133,22 +134,21 @@ function compare(a,b){
 
 
 // toSpliced
-// array.splice(시작인덱스, 삭제개수, 추가할값);
 
-// ⭐⭐map 새로운 배열을 반환
-// 사람들의 이름만을 모아놓은 새로운 배열
-const names = people.map((user, index) => user.name);
+console.clear();
 
-// 현재 나이에서 전부 +2살 올린 새로운 배열을 만들어주세요.
-// const afterTwoYears = people.map((user) => ({
-//   ...user,
-//   age: user.age + 2,
-// }));
-// console.log(afterTwoYears);
+// ⭐️ map ⭐️  새로운 배열을 반환 
+// 사람들의 이름만을 모아놓은 새로운 배열 
 
-const ages = people.map((user) => {
-  return user.age + 2;
-});
+const names = people.map((user,index) => `나의 이름은 : ${user.name}`)
+
+
+// 현재 나이에서 전부 +2살을한 새로운 배열을 만들어주세요.
+
+const ages = people.map((user)=>{
+  return user.age + 2
+})
+
 
 const tags = people.map(({imgSrc, imgAlt, name, age, job})=>{
   
@@ -178,6 +178,11 @@ document.querySelector('ul').insertAdjacentHTML('beforeend',tags)
 
 
 
+
+
+
+
+
 /* 요소 포함 여부 확인 ---------------------- */
 
 // indexOf
@@ -188,20 +193,27 @@ document.querySelector('ul').insertAdjacentHTML('beforeend',tags)
 
 // find
 
-const az = people.find((user) => {
-  return user.age > 20;
-});
+const az = people.find((user)=>{
+  return user.age > 20
+})
+
+
+
+
 
 // findIndex
 
 /* 요소 걸러내기 --------------------------- */
 
-// 새로운 배열을 반환함. map 이랑 비슷함
-// 따라서 return이 필수임
+// 새로운 배열을 반환하기 때문에 return은 필수 = map
 
-const mz = people.filter((user) => user.age > 20);
+const mz = people.filter(user => user.age > 20);
 
 
+
+
+
+// filter
 
 /* 요소별 리듀서(reducer) 실행 -------------- */
 
@@ -223,73 +235,82 @@ document.querySelector('ul').insertAdjacentHTML('beforeend',template);
 
 /* string ←→ array 변환 ------------------ */
 
-// split
-const _arr = '안/녕/하/세/요';
 
+
+const _arr = '안/녕/하/세/요'
+
+// split
 const stringToArray = _arr.split('/');
 
-const arrayToString = stringToArray.join('-');
 
 // join
+const arrayToString = stringToArray.join('-');
 
 
 
 
 
-
+// forEach  배열을 순환 값을 반환하지 않음 
+// map      배열을 순환 값을 반환 (새로운 배열)
+// filter   배열을 순환 값을 반환 (새로운 배열)
+// reduce   배열을 순환 값을 반환 (any)
 
 
 const product = [
-  { name: '냉동 만두', price: 12000, brand: '비비고' },
-  { name: '냉동 피자', price: 15000, brand: '오뚜기' },
-  { name: '냉동 새우', price: 13500, brand: '곰곰' },
-  { name: '냉동 치킨', price: 11000, brand: '하림' },
-];
+  {name:'냉동 만두', price: 12000, brand:'비비고'},
+  {name:'냉동 피자', price: 15000, brand:'오뚜기'},
+  {name:'냉동 새우', price: 13500, brand:'곰곰'},
+  {name:'냉동 치킨', price: 11000, brand:'하림'},
+]
 
-const forEach = (f, i) => {
-  for (const a of i) {
-    f(a);
-  }
-};
 
-forEach((item) => console.log(item.price), product);
+const forEach = (f,i) => {
 
-const map = (f, i) => {
-  const result = [];
-
-  for (const a of i) {
-    result.push(f(a));
+  for(const a of i){
+    f(a)
   }
 
-  return result;
-};
+}
 
-const brands = map((item) => item.brand, product);
-
-map((item)=> item.brand , product); // 브랜드의 목록들을 담은 새로운 배열
-
+// const forEach = (f,i) => {
+//   for(const a of i) f(a)
+// }
 
 
-const filter = (f, i) => {
+forEach((item)=> console.log(item.price) ,product)
+
+
+const map = (f,i) => {
   const arr = [];
 
-  for (const a of i) {
-    if (f(a)) {
-      arr.push(a);
+  for(const a of i){
+    arr.push(f(a))
+  }
+  return arr;
+}
+
+
+const newData = map((item)=> item.brand , product) // 브랜드의 목록들을 담은 새로운 배열
+
+
+
+const filter = (f,i) => {
+  const arr = [];
+  for(const a of i){
+    if(f(a)){
+      arr.push(a)
     }
   }
-
   return arr;
-};
+}
 
-const cheapProducts = filter( (item) => item.price < 12000, product );
 
-console.log(cheapProducts);
-
+const newFilter = filter(item => item.price < 12000, product);
 
 
 const reduce = (arr, f, initialValue) => {
   let acc = initialValue;
+  
   for(const [index, currentValue] of arr.entries()){
     acc = f(acc, currentValue, index, arr);
   }
@@ -297,10 +318,15 @@ const reduce = (arr, f, initialValue) => {
   return acc;
 }
 
-reduce( product,(acc,cur) => acc + cur.price,0 );
+
+
+reduce( product,(acc,cur) => acc + cur.price,0 )
+
 
 
 console.clear();
+
+
 
 const curry = (f) => (a, ...args) => 
   args.length ? f(a, ...args) : (...rest) => f(a,...rest);
@@ -376,3 +402,13 @@ go(
 
 // take .........
 // Lazy function
+
+
+
+
+
+
+
+
+
+

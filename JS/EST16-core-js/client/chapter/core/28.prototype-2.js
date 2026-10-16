@@ -64,3 +64,63 @@ class Tiger extends Animal{
 
 
 const tiger = new Tiger('호돌이');
+
+
+
+
+class Object {
+
+
+
+
+
+
+
+
+
+
+  
+}
+
+
+
+class Array extends Object{
+
+  forEach(f){
+    f()
+  }
+  reduce(f,initValue){
+    f()
+  }
+
+  static from(){
+  }
+
+  static isArray(){
+  }
+}
+
+
+[1,2,3].forEach(()=>{})
+[1,2,3].reduce(()=>{},0)
+
+// Array.from()
+// Array.isArray()
+
+
+// Array -> Object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
