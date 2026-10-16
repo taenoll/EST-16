@@ -27,6 +27,9 @@ function handleRollingDice() {
     console.log('멈춰!');
     clearInterval(stopAnimation);
   }
+
+  isClicked = !isClicked;
+  
 }
 
 rollingButton.addEventListener('click', handleRollingDice);
