@@ -1,11 +1,12 @@
 import {
   attr,
   getNode as $,
+  isString,
   addClass,
   insertLast,
   removeClass,
   clearContent,
-} from "./lib/dom/index.js"
+} from "./lib/index.js"
 
 
 
@@ -29,6 +30,7 @@ import {
 // named export      => import { 함수이름/변수이름 as $ } from '경로설정
 // default export    => import 함수이름/변수이름 from '경로설정 << as 사용 불가,
 // ㄴ무조건 뭔가가 나갈 거야 라고 약속을 한 것. 
+// 디폴트도 
 
 
 
