@@ -2,8 +2,13 @@
 /* While Loop      */
 /* --------------- */
 
+// let i = 10;
 
+// while(i > 0){
 
+//   console.log(i--)
+
+// }
 
 const frontEndDev = [
   'HTML',
@@ -13,6 +18,8 @@ const frontEndDev = [
   'jQuery',
   'React',
   'Redux',
+  'NextJS',
+  'Zustand',
 ];
 
 /* 프론트엔드 개발 집합 항목 출력 ---------------------------------------------- */
@@ -25,8 +32,8 @@ const frontEndDev = [
 // console.log(frontEndDev[5]);
 // console.log(frontEndDev[6]);
 
-
 /* 프론트엔드 개발 집합을 순환해서 각 아이템을 Console 패널에 출력 -------------------- */
+
 
 
 console.time('순방향')
@@ -55,6 +62,7 @@ while(l){
 }
 
 console.timeEnd('역방향')
+
 
 
 

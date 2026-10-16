@@ -17,90 +17,118 @@ const resultZ = calcTotal(9000, -2500, 5000, 11900);
 
 
 // 함수 선언 → 일반 함수 (표현)식
+let calculateTotal = function (){
 
-let calculateTotal = function () {
-  // 함수 안에서만 접근 가능한 전달 인수들의 유사 배열 객체
-  console.log(arguments); // 드디어 나왔다!! 배열의 기능을 할 수 있지만 사실 객체인 녀석
 
+  // 함수 안에서만 접근 가능한 인수들의 집합 객체 
+  
   let total = 0;
-
-  // for (let i = 0; i < arguments.length; i++) {
+  
+  // for문을 사용해서 모든 값의 합을 return 시켜주세요.
+  // for(let i = 0; i < arguments.length; i++){
+    
   //   // total = total + arguments[i];
   //   total += arguments[i];
+    
   // }
-
+  
   // return total;
 
 
-  // for...of를 사용해서 모든 값의 합을 return 시켜주세요.
-  // for...of를 사용해 전달된 인수의 값을 하나씩 순회
-  // for (const value of arguments) {
+  // for...of를 사용해 모든 값의 합을 return 시켜주세요.
+
+  // for(const value of arguments) total += value;
+  // return total;
+
+  // 배열의 메서드  => forEach (값을 내보낼 수 없음), reduce (값을 내보냄), map, filter
+  // 유사배열 -> 진짜 배열을 만들면 되지 않나?
+  
+  // const arr = Array.prototype.slice.call(arguments) // array instance method
+  // const arr = Array.from(arguments) // array static method
+  const arr = [...arguments]
+
+  // function sum(value){
   //   total += value;
   // }
 
-  // return total;
+  //  arr.forEach(function(value,index){
 
-
-  // 배열의 메서드 => forEach(값을 내보낼 수 없음), reduce(값을 내보냄)
-  // 유사배열을 진짜 배열로 만들면 되는 거 아닌가?
-  // const arr = Array.prototype.slice.call(arguments); //정파
-  // const arr = Array.from(arguments); // 사파
-
-  // 배열을 만들 수 있는 또 다른 방법...
-  const arr = [...arguments] // spread operator 전개 연산자
-
-
-  // arr.forEach(function(value, index){
-
-  //   console.log(value);
-    
-  // })
-
-  //  return total;
-
-// reduce는 초깃값을 설정하지 않으면 배열의 첫 번째 값을 acc에 할당합니다.
-  Array.reduce(function(acc,current){
-
-    acc + current;
-
-    console.log('acc : ', acc);
-    console.log('current : ', current);
-  },0)
-     
+  //      return value
+      
+  //   })
 
   
 
+// reduce는 초깃값을 설정하지 않으면 배열의 첫 번째 값을 acc에 할당합니다.
+  // return arr.reduce(function(acc,current){
+    
+  //   return acc + current;
+    
+  // },0)
+  
+  
+  // prototype 변경하기  
+
+  
+  // console.log( arguments );
+  
+  
+ 
+  // return total
+
+          // 던더 프로토
+  arguments.__proto__ = Array.prototype;
+
+
+  arguments.forEach(function(v){
+    // console.log( v );
+  })
+
+  // return a + b + c + d + e + f + g
 };
 
 
+const result = calculateTotal(10000,23500,38400,19900,18700,29800,9900)
 
-const result = calculateTotal(10000,23500,38400,18400,19900,29800,9900);
+// console.log( result );
 
-console.log(result);
+
+
+
 
 
 
 
 // 익명(이름이 없는) 함수 (표현)식
-let anonymousFunctionExpression = function () {
+let anonymousFunctionExpression = function (){
+
 };
 
 
 // 유명(이름을 가진) 함수 (표현)식
-let namedFunctionExpression = function hello() {
+let namedFunctionExpression = function hello (){
+
 };
 
 
 // 콜백 함수 (표현)식
 let cb = function(condition, success, fail){
 
-  if(condition) success()
-    else fail()
+  // const success = function(){ console.log('성공입니다.'); }
+  // const fail = function(){ console.log('실패입니다.'); }
+
+  if(condition) {
+    success()
+  }
+  else {
+    fail()
+  }
 
 };
 
+
 cb(
-  true,
+  false,
   function(){
     console.log('성공입니다.');
   },
@@ -113,22 +141,88 @@ cb(
 // 함수 선언문 vs. 함수 (표현)식
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 그래서 콜백 함수를 왜 쓰는거야? 뭐가 좋은거지?
+
+
+function movePage(url,success,fail){
+
+  if(url.includes('https')){   // 제대로된 url
+    success(url);
+    
+  }else{  // 이상한 url
+    fail();
+  }
+}
+
+
+// 동적으로 만들자! 
+
+movePage( 
+  'https://www.naver.com',
+  글자 => console.log(`${글자} 다이나믹하게 움직이는 애니메이션 `),
+  () => console.log('애니메이션 없애고 정적 페이지 로드 ')
+ )
+
+
+
+
+ function getGeolocation(success){
+  
+
+   navigator.geolocation.getCurrentPosition(function(so){
+  
+    const data = so.coords.latitude;
+
+    success(data)
+    
+  })
+
+ }
+ 
+
+//  서비스 개발  너의집근처 '너뒤'
+
+getGeolocation(function(data){
+
+    // console.log( `이곳이 맛집입니다 : ${data} ` );
+    
+});
+
+
+
 // 즉시 실행 함수 (표현)식
 // Immediately Invoked Function Expression
 let IIFE;
 
+// encapsulation (캡슐화)
+// 클로저 closure 폐쇄 
 
-
-// encapsulation 캡슐화
-// 클로저 closure 패쇄
-
-const master = (function(){
+const master = (function(t){
 
   // var a = 10;
+  var uuid = 'zjka!@#a989asdf!Jasdkj'
 
-  let uuid = 'asdf@!$#@$$adf'
-
-  return{
+  return {
     getKey(){
       return uuid
     },
@@ -136,6 +230,20 @@ const master = (function(){
       uuid = value;
     }
   }
+
 }())
 
-console.log(master);
+console.log( master );
+
+
+
+
+
+
+
+
+
+
+
+
+

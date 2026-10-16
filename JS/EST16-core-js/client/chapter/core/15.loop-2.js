@@ -1,3 +1,24 @@
+
+
+
+
+let i = 0;
+
+do{
+
+  console.log(i);
+  
+  if( i === 3){
+    break;
+  }
+
+  i++
+
+
+}while( i < 5 );
+
+
+
 /* -------------------- */
 /* Do While Loop        */
 /* -------------------- */
@@ -15,53 +36,30 @@
 
 
 
-// let i = 0;
-// do {
-//   console.log(i);
 
-//   i++
-  
-// } while (i<5);
-
-
-// const first = document.querySelector('.first');
-// let second = first;
-
-// do {
-//   second = second.nextSibling;
-
-//   console.log(second);
-// } while (second.nodeType !== 1);
-
-
-// const first = document.querySelector('.first');
-
-// function next(first) {
-//   let second = first;
-
-//   do {
-//     second = second.nextSibling;
-//   } while (second && second.nodeType !== 1);
-
-//   return second;
-// }
 
 const first = document.querySelector('.first');
 
-function next(node) {
-  // node로 들어온 값이 문자열인가?
-  if (typeof node === 'string') {
-    node = document.querySelector(node);
+
+
+function next(node){
+  
+  // node로 넘어온 값이 문자인가? 
+  
+  // type guard => validation
+  if(typeof node === 'string'){
+    node = document.querySelector(node)
   }
 
-  do {
+  do{
+
     node = node.nextSibling;
-  } while (node.nodeType !== 1);
+
+  }while(node.nodeType !== 1)
 
   return node;
 }
 
-console.log(next(first));
 
 
 function prev(node){
@@ -77,3 +75,35 @@ function prev(node){
 
   return node;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

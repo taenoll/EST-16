@@ -26,10 +26,14 @@ console.log(messenger === conversationTool);
 // 객체 복사
 
 
+
+
+
+
 const cloneObject = {}
 
 // 1. for ~ in 문을 사용한 복사
-for (const key in messenger){
+for(const key in messenger){
   cloneObject[key] = messenger[key];
 }
 
@@ -44,18 +48,16 @@ const spreadObject = {...messenger};
 
 // 4. 객체를 복사해주는 유틸 함수 
 const copiedObject = obj => Object.assign({},obj);
-const _copiedObject = o => ({...o});
+const _copiedObject = o => ({...o}) ;
 
-copiedObject(messenger);
+copiedObject(messenger)
 
+// 객체 병합(합성) mixin 
 
-
-// 객체 병합(합성) mixin
 const cssMapA = {
   color: '#4b004b',
   margin: '0 auto',
 };
-
 
 const cssMapB = {
   display: 'flex',
@@ -65,10 +67,8 @@ const cssMapB = {
   color: '#3f9e97',
 };
 
-
-// let combinedCssMap = Object.assign({},cssMapA, cssMapB);
-let combinedCssMap = {...cssMapA, ...cssMapB};
-
+// let combinedCssMap = Object.assign({},cssMapB,cssMapA);
+let combinedCssMap = {...cssMapA,...cssMapB};
 
 
 // 중첩된 프로퍼티에 객체를 포함하는 객체 복사
@@ -95,6 +95,7 @@ let copiedContainerStyles = {
 
 
 
+
 // 1. 깊은 복사 유틸리티 함수
 function cloneDeep(object) {
   return Object.fromEntries(
@@ -108,7 +109,24 @@ function cloneDeep(object) {
   );
 }
 
+
 const deep = cloneDeep(containerStyles);
+
+
+
+/* 
+
+1. 참조에 의한 객체 복사 (객체나 배열은 기본적으로 참조 복사가 진행됩니다.) 리액트 최악
+2. 얕은 복사 (shallow) Object.assign, ...spread operator 
+3. 깊은 복사 (deep) ...spread..., 유틸 함수
+
+*/
+
+
+
+
+
+
 
 
 // 2. Lodash 라이브러리 활용

@@ -108,6 +108,20 @@ try{
 
   console.dir( message );
 
-  document.body.innerHTML = '404 not found ❌' + message
+  // document.body.innerHTML = '404 not found ❌' + message
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,23 +2,30 @@
 /* For Of Loop     */
 /* --------------- */
 
-// enumerable => 열거 가능한 
+// enumerable => 열거 가능한
 // iterable   => 반복 가능한
 // mutable    => 변형 가능한
 // immutable  => 변형 할 수 없는
 
+// for...of  배열에서 쓸 수 있는 반복문 x
+// for...of  iterable한 요소에 사용할 수 있는 반복문.
 
-// for...of 배열에서 쓸 수 있는 반복문 x
-// for...of iterable한 요소에 사용할 수 있는 반복문
+// 쉼표 구분
+// 인덱스를 가지고있다.
+// 길이가 (length)가 있다.
 
-// 보통 배열이란?
-// 인덱스를 가지고 있다.
-// 구분 길이(length)가 있다.
+const arrayLike = {
+  0: 'body',
+  1: 'head',
+  2: 'div',
+  length: 3,
+};
 
+// for(const key of 'hello my friends~'){
+//   console.log(key);
 
+// }
 
-
-//  좀 복잡하게 보이지만 얘는 배열임
 const languages = [
   {
     id: 'ecma-262',
@@ -46,29 +53,21 @@ const languages = [
   },
 ];
 
+Object.prototype.nickName = 'tiger';
 
 // for ~ of 문
 // - 특정 조건에서 건너띄기
 // - 특정 조건에서 중단하기
 
-for(const value of languages){
-
+for (const value of languages) {
   const name = value.name;
-
-  if(name.includes('Java') && name.length < 5 ) continue;
 
   console.log(value);
 
+  if (name.includes('Java') && name.length < 5) continue;
 
+  console.log(name);
 }
-
-
-
-
-
-
-
-
 
 const randomUser = {
   gender: 'female',
@@ -80,7 +79,10 @@ const randomUser = {
     country: 'United Kingdom',
     postcode: 'FO5E 4TN',
     coordinates: { latitude: '-4.3301', longitude: '155.0223' },
-    timezone: { offset: '-4:00', description: 'Atlantic Time (Canada), Caracas, La Paz' },
+    timezone: {
+      offset: '-4:00',
+      description: 'Atlantic Time (Canada), Caracas, La Paz',
+    },
   },
   email: 'carol.may@example.com',
   login: {
@@ -107,63 +109,48 @@ const randomUser = {
 
 console.clear();
 
-
-
 const obj = {
   nickName: 'tiger',
   age: 30,
+  address: '남양주시',
 };
 
+//  객체 순환 for..in을 써야함...  문제가 있음 : 조상의 아이템
+//  hasOwn..사용하면 해결이 됨..
+//  for...of는 그런거 필요 없음...
+//  for..of를, 쓰려면 iterable한 요소여야 사용이 가능함..
+//  그럼 객체를 배열로 바꿔버렸!!!!!!!!!!!!!!!!
 
-// 객체 순환 for...in을 써야함...
-// 문제가 있음 - 조상의 아이템
-// hasOwn... 사용하면 해결이 됨..
-// for...of는 그렇게 필요 없음..
-// for...of를 쓰려면 iterable한 요소여야 사용이 가능함..
-// 그럼 객체를 배열로 바꿔버림!!!!!!!!
+const keys = Object.keys(obj); // 객체의 key들을 모아 새로운 배열을 '반환' 하는 유틸 함수
+//  ['nickName', 'age']
 
-
-// Object.keys()
-
-const keys = Object.keys(obj); // 객체의 key들을 모아 새로운 배열로 반환하는 유틸 함수
-
-// ['nickName', 'age']
-// console.log(keys);
-
-// Object.keys()의 반환값은 배열이므로
-// iterable → for...of 사용 가능
 for (const key of keys) {
-  console.log(key);
+  // console.log(key);
 }
 
-const values = Object.values(obj); // 객체의 value들을 모아 새로운 배열을 반환
-// ['tiger', 30]
+// Object.values()
+const values = Object.values(obj); // 객체의 value들을 모아 새로운 배열을 '반환' 하는 유틸 함수
+//  ['tiger', '30']
 
 for (const value of values) {
-  console.log(value);
+  // console.log( value );
 }
 
 // Object.entries()
-// 객체의 key와 value를 [key, value] 형태의 한 쌍 배열로 묶어서
-// 새로운 배열로 반환
-const entries = Object.entries(obj);
-// [ ['nickName', 'tiger'], ['age', 30] ]
+const entries = Object.entries(obj); // 객체의 key,value를 모아 한 쌍의 배열로 '반환' 하는 유틸 함수
+// [ [key,value],[key,value] ]
 
-console.log(entries);
+// console.log(entries);
 
+// 구조 분해 할당
+for (const keyValue of entries) {
+  const key = keyValue[0];
+  const value = keyValue[1];
 
-// entries를 for...of로 순환하기
-for (const [key, value] of entries) {
-  console.log(key, value)
-  // const key = keyValue[0];
-  // const value = keyValue[1];
-
-  console.log(key, value);
+  // console.log( key, value );
 }
 
-console.clear();
-
-// 점수가 80점 이상인 과목만 콘솔창에 출력
+// 점수가 80점 이상인 과목만 콘솔창에 출력해주세요.
 
 const scores = {
   html: 90,
@@ -172,18 +159,18 @@ const scores = {
   react: 60,
 };
 
-Object.entries(scores)
-
 for (const [subject, score] of Object.entries(scores)) {
+  // const subject = keyValue[0];
+  // const score = keyValue[1];
+
   if (score >= 80) {
     // console.log(subject, score);
   }
 }
 
-
 // 객체의 키, 값 순환
-// - for ~ in 문 
-/*
+// - for ~ in 문
+
 for (const key in randomUser) {
   if (Object.hasOwn(randomUser, key)) {
     const L1 = randomUser[key];
@@ -210,11 +197,32 @@ for (const key in randomUser) {
     }
   }
 }
-*/
 
-// - for ~ of 문 
-for(const keyValue of Object.entries(randomUser)){
-  
+// - for ~ of 문
+
+for (const [key,value] of Object.entries(randomUser)) {
+  // const key = keyValue[0];
+  // const value = keyValue[1];
+  console.log(value);
+
+  if (typeof value === 'object') {
+    for (const keyValue of Object.entries(value)) {
+      const key = keyValue[0];
+      const value = keyValue[1];
+      console.log('\t', value);
+
+      if (typeof value === 'object') {
+        for (const keyValue of Object.entries(value)) {
+          const key = keyValue[0];
+          const value = keyValue[1];
+          console.log('\t\t', value);
+        }
+      }
+    }
+  }
 }
 
-// - 성능 비교 판단
+// - 성능 비교 진단
+
+
+

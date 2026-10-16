@@ -26,13 +26,27 @@ const memoizedObject = {
  */
 
 
+
+
+
+const newValue = 20;
+
+
 // 함수 내부의 변수는 외부에서 접근할 수 없습니다.
 // 이는 함수가 실행과 종료가 됨에 따라 함수 내부에 사용된 모든 변수, 매개변수, this 항목들이 일괄 삭제됩니다.(가비지컬렉터)
 
-function sum() {
+function sum (){
   const data = 10;
   console.log(data);
-  console.log(newValue);
+  console.log( newValue );
+  
+
 }
 
-sum();
+sum()
+
+
+
+
+
+
