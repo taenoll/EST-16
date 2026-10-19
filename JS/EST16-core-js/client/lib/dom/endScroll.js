@@ -1,4 +1,4 @@
-import { isString } from "../utils.js";
+import { isString } from '../utils/index.js';
 import { getNode } from "./getNode.js";
 
 
