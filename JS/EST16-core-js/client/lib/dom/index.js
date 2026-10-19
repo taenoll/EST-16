@@ -11,6 +11,7 @@ export * from './attr.js'
 export * from './insert.js'
 export * from './getNode.js'
 export * from './showAlert.js'
+export * from './endScroll.js'
 export {default as clearContent} from './clearContent.js'
 
 
