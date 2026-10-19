@@ -3,9 +3,10 @@
 
 
 export * from './type.js'
+export * from './xhr.js'
 export * from './debounce.js'
 export * from './throttle.js'
-export * from './copyCipboard.js'
+export * from './copyClipboard.js'
 
 
 
