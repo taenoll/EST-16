@@ -83,9 +83,8 @@ function handleDeleteCard(e){
 
 
 
-userCardInner.addEventListener('click',handleDeleteCard);
 
-
+userCardInner.addEventListener('click', handleDeleteCard);
 
 
 const createButton = getNode('.create');
@@ -94,3 +93,21 @@ const doneButton = getNode('.done');
 const nameField = getNode('#nameField');
 
 
+function handleCreate() {
+  gsap.to('.pop', { autoAlpha: 1 });
+}
+
+
+function handleCancel(e) {
+  e.stopPropagation();
+  gsap.to('.pop', { autoAlpha: 0 });
+}
+
+function handleDone(){
+  
+}
+
+
+createButton.addEventListener('click', handleCreate);
+cancelButton.addEventListener('click', handleCancel);
+doneButton.addEventListener('click', handleDone);
