@@ -1,8 +1,7 @@
 /* eslint-disable no-undef */
 
-
 import { renderUserCard, renderSpinner, renderEmptyCard } from './lib/dom/userList.js';
-import { changeColor, delayP, getNode, insertLast, tiger } from './lib/index.js';
+import { changeColor, clearContent, delayP, getNode, insertLast, tiger } from './lib/index.js';
 
 
 
@@ -19,6 +18,7 @@ async function renderUserList(){
 
     const response = await tiger.get(END_POINT);
     // const response = await fetch(END_POINT);
+
     const data = response.data;
 
     await delayP(1000);
@@ -76,15 +76,20 @@ function handleDeleteCard(e){
   const index = article.dataset.index.slice(5);
 
   tiger.delete(`${END_POINT}/${index}`)
-  
+  .then(()=>{
+    alert('삭제가 완료됐습니다.');
 
+    clearContent(userCardInner);
+    renderUserList();
+    
+  })
 }
 
 
 
 
+userCardInner.addEventListener('click',handleDeleteCard)
 
-userCardInner.addEventListener('click', handleDeleteCard);
 
 
 const createButton = getNode('.create');
@@ -93,21 +98,40 @@ const doneButton = getNode('.done');
 const nameField = getNode('#nameField');
 
 
-function handleCreate() {
-  gsap.to('.pop', { autoAlpha: 1 });
+
+function handleCreate(){
+  gsap.to('.pop',{autoAlpha:1})
 }
 
-
-function handleCancel(e) {
+function handleCancel(e){
   e.stopPropagation();
-  gsap.to('.pop', { autoAlpha: 0 });
+  gsap.to('.pop',{autoAlpha:0})
 }
 
-function handleDone(){
+function handleDone(e){
+  e.preventDefault();
+
+  const username = getNode('#nameField').value;
+  const email = getNode('#emailField').value;
+  const website = getNode('#siteField').value;
+
+
+  tiger.post(END_POINT,{username,email,website})
+  .then(()=>{
+    gsap.to('.pop',{autoAlpha:0});
+    clearContent(userCardInner);
+    renderUserList();
+    getNode('#nameField').value = '';
+    getNode('#emailField').value = '';
+    getNode('#siteField').value = '';
+  })
+  
   
 }
 
 
-createButton.addEventListener('click', handleCreate);
-cancelButton.addEventListener('click', handleCancel);
-doneButton.addEventListener('click', handleDone);
+
+
+createButton.addEventListener('click',handleCreate);
+cancelButton.addEventListener('click',handleCancel);
+doneButton.addEventListener('click',handleDone);

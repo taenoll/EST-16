@@ -3,6 +3,7 @@
 
 
 export * from './xhr.js'
+export * from './auth.js'
 export * from './type.js'
 export * from './tiger.js'
 export * from './delay.js'
