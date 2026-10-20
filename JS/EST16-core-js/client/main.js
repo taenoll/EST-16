@@ -7,7 +7,7 @@ import { changeColor, delayP, getNode, insertLast, tiger } from './lib/index.js'
 
 
 
-const END_POINT = 'https://6ad6f74df71f154ac487884a.mockapi.io/users';
+const END_POINT = 'https://6ad6f74df71f154ac487884a.mockapi.io/user';
 
 const userCardInner = getNode('.user-card-inner');
 
@@ -18,6 +18,7 @@ async function renderUserList(){
   try{
 
     const response = await tiger.get(END_POINT);
+    // const response = await fetch(END_POINT);
     const data = response.data;
 
     await delayP(1000);
@@ -82,4 +83,14 @@ function handleDeleteCard(e){
 
 
 
-userCardInner.addEventListener('click',handleDeleteCard)
+userCardInner.addEventListener('click',handleDeleteCard);
+
+
+
+
+const createButton = getNode('.create');
+const cancelButton = getNode('.cancel');
+const doneButton = getNode('.done');
+const nameField = getNode('#nameField');
+
+
