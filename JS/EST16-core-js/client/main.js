@@ -1,4 +1,4 @@
 
 
-// import {} from './conponents/Card/Card.js'
-import {} from './conponents/Todo/TodoApp.js'
+// import {} from './components/Card/Card.js'
+import {} from './components/Todo/TodoApp.js'
