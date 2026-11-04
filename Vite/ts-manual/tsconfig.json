@@ -4,7 +4,7 @@
     "target": "esnext",
     "outDir":"dist",
     "rootDir": "./src",
-    "strict": false, // 작성하지 않으면 true가 기본값 (매운맛)
+    "strict": true, // 작성하지 않으면 true가 기본값 (매운맛)
     "noImplicitAny": true, // strict 항목들 중 1개
     "strictNullChecks": true,
     "moduleDetection": "force",
