@@ -1,27 +1,30 @@
-import { createElement } from "./lib/virtual/index.js";
 
+import { Greeting } from './data.js';
+import React from './lib/react.js';
+import ReactDOM from './lib/react-dom.js';
 
-/* actual DOM 실제 돔
-웹 API를 사용해서 문서 객체(Document Object)를 생성
-*/
+const getRandom = (n) => {
+  return Math.floor(Math.random() * n);
+};
 
-// 부모 요소 생성
-const divElement = document.createElement('div');
+const keys = Object.keys(Greeting);
+const key = keys[getRandom(keys.length)];
+const value = Greeting[key];
 
-// 자식 요소 생성
-const buttonElement = document.createElement('button');
-buttonElement.textContent = 'hello';
+// console.log(keys, key, value);
 
-// 요소간의 관계 형성
-divElement.append(buttonElement);
+// <h1 title="나라별 인사말 - KO">인사말 : 안녕하세요</h1>
 
-// 렌더링 위치 정하기
-const actualDomElement = document.getElementById('app');
+const app = document.getElementById('app');
 
-// 실제 DOM에 마운트(Mount, 확장 === 렌더링)
-actualDomElement.append(divElement);
+// createRoot
+const root = ReactDOM.createRoot(app);
 
+// createElement
+const element = React.createElement(
+  'h1',
+  { title: `나라별 인사말 - ${key}` },
+  `인사말 : ${value}`
+);
 
-
-
-
+root.render(element);
