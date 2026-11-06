@@ -19,3 +19,49 @@ const map:Map = (arr,f)=> {
 
 
 map(arr,(a)=> a * 2) // [2,4,8];
+
+
+
+
+type Callback<T> = (a: T, i: number) => void;
+type ForEach = <T>(arr: T[], f: Callback<T>) => void;
+
+const forEach: ForEach = (arr, f) => {
+  let i = 0;
+
+  for (const a of arr) {
+    f(a, i++);
+  }
+};
+
+forEach(arr, (a, i) => console.log(a));
+
+
+
+
+const filter = <T>( arr: T[], f: (a: T, i: number) => boolean ): T[] => {
+  const result: T[] = [];
+  let i = 0;
+
+  for (const a of arr) {
+    if (f(a, i++)) result.push(a);
+  }
+
+  return result;
+};
+
+
+
+
+
+const reduce = <T, U>( arr: T[], f: (acc: U, a: T, i: number) 
+  => U, initial: U ): U => {
+  let acc = initial;
+  let i = 0;
+
+  for (const a of arr) {
+    acc = f(acc, a, i++);
+  }
+
+  return acc;
+};
