@@ -35,18 +35,14 @@ function ProfileCard(): JSX.Element {
           <dt>GitHub</dt>
           {/* TODO 9. 링크 속성 바인딩 */}
           <dd>
-            <a href={github} target="_blank" rel="noopener noreferrer" >
-              {github}
-            </a>
+            <a href={github} target="_blank" rel="noopener noreferrer" > {github} </a>
           </dd>
         </div>
 
         <div>
           <dt>기술 스택</dt>
           {/* TODO 10. 배열 메서드 결과 바인딩 */}
-          <dd>
-            {skills.join(' / ')} ({skills.length}개)
-          </dd>
+          <dd> {skills.join(' / ')} ({skills.length}개) </dd>
         </div>
 
         <div>
