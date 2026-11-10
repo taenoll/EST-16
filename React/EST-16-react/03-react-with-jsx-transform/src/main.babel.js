@@ -1,9 +1,8 @@
-import { createElement as h } from "../../lib/react.js";
+import React from '/src/Lib/react.js';
+import ReactDOM from 'src/lib/react-dom.js'
 
 
-
-
-export function Avatar({name, status, size = 64}){
+function Avatar({name, status, size = 64}){
   
   let iconPath = '';
   let statusMessage = '';
@@ -33,30 +32,35 @@ export function Avatar({name, status, size = 64}){
   return (
     <li className="avatar">
       <figure aria-label={label} title={label}>
-
+        <div className="cover">
+          <img src={`/avatar/${name}.png`} alt={name}/>
+        </div>
+        <figcaption>
+          <img src={iconPath} alt=""/>
+        </figcaption>
       </figure>
     </li>
   )
 
-  // return h(
-  //   'li',
-  //   {className: 'avatar'},
-  //   h(
-  //     'figure',
-  //     {'aria-label':label, title: label},
-  //     h('div',{className:'cover'},
-  //       h('img',{
-  //         src:`/avatar/${name}.png`,
-  //         alt:'',
-  //       })
-  //     ),
-  //     h('figcaption',null,
-  //       h('img',{
-  //         src:iconPath,
-  //         alt:''
-  //       })
-  //     ),
-  //   )
-  // )
 }
 
+
+
+function AvatarPage(){
+  
+  return (
+    <ul className="avatarList">
+      <Avatar name="sinzzang" status="offline"/>
+      <Avatar name="sinpapa" status="online"/>
+      <Avatar name="bongmiseon" status="away"/>
+    </ul>
+  )
+}
+
+
+const container = document.getElementById('app');
+
+if (container) {
+  const reactDomRoot = ReactDOM.createRoot(container);
+  reactDomRoot.render(<AvatarPage />);
+}
