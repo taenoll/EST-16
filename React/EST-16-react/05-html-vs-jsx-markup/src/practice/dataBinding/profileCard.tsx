@@ -42,13 +42,13 @@ function ProfileCard(): JSX.Element {
         <div>
           <dt>기술 스택</dt>
           {/* TODO 10. 배열 메서드 결과 바인딩 */}
-          <dd> {skills.join(' / ')} ({skills.length}개) </dd>
+          <dd> {skills.join(' 🌟 ')} ({skills.length}개) </dd>
         </div>
 
         <div>
           <dt>구직 중</dt>
           {/* TODO 11. 불리언 값 출력 */}
-          <dd>{isOpenToWork ? '예' : '아니요'}</dd>
+          <dd>{isOpenToWork ? 'yes' : 'no'}</dd>
         </div>
       </dl>
 
