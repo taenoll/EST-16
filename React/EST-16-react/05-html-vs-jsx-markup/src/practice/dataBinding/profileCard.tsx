@@ -27,7 +27,6 @@ function ProfileCard(): JSX.Element {
       <dl className="info">
         <div>
           <dt>나이</dt>
-          {/* TODO 8. 표현식 바인딩 */}
           <dd>{age}세</dd>
         </div>
 
