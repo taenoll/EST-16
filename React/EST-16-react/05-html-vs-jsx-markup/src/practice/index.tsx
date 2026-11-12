@@ -5,6 +5,7 @@ import ProfileCard from './dataBinding/profileCard';
 import OrderCard from './conditionalRendering/OrderCard';
 import { orders } from './conditionalRendering/data';
 import PlayListCard from './renderList/PlayListCard';
+import { playlists } from './renderList/data'; 
 
 function Practice(): JSX.Element {
   return (
@@ -25,7 +26,7 @@ function Practice(): JSX.Element {
       <section>
         <h1>Render List</h1>
         <div>
-          <PlayListCard />
+          <PlayListCard playlist={playlists[0]} />
         </div>
       </section>
     </div>

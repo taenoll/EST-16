@@ -6,6 +6,7 @@ import DataBinding from './DataBinding';
 import ConditionalRendering from './ConditionalRendering';
 import ConditionalDisplay from './ConditionalDisplay';
 import RenderList from './RenderList';
+import RenderableValues from './RenderableValues';
 
 function JSX_Markup(): JSX.Element {
   const {
@@ -25,6 +26,7 @@ function JSX_Markup(): JSX.Element {
       </ConditionalRendering>
       <ConditionalDisplay isShowReactImage={isShowReactImage} />
       <RenderList items={statusMessagesWithID} reactLibrary={reactLibrary} />
+      <RenderList items={statusMessagesWithID} reactLibrary={reactLibrary} /> <RenderableValues />
     </dl>
   );
 }
