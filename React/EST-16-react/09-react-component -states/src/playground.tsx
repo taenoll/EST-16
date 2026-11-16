@@ -1,4 +1,4 @@
-import ProductPage from "./pagers/products/types/ProductPage";
+import ProductPage from "./pagers/products/ProductPage";
 // import UserPage from "./pagers/users/UserPage";
 
 
