@@ -1,13 +1,14 @@
-import "./ProductPage.css";
-import { productData } from "./data";
 
-import ProductSearch from "./components/ProductSearch";
-import StockFilter from "./components/StockFilter";
-import ProductList from "./components/ProductList";
-import ProductCount from "./components/ProductCount";
+import { useState } from 'react';
+import './ProductPage.css';
+import { productData } from './data';
+
+import ProductSearch from './components/ProductSearch';
+import StockFilter from './components/StockFilter';
+import ProductList from './components/ProductList';
+import ProductCount from './components/ProductCount';
 
 function ProductPage() {
-
   // [상태 선언]
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -24,14 +25,12 @@ function ProductPage() {
       <h1>상품 목록</h1>
 
       <ProductSearch onSearch={handleSearch} />
-      <ProductList products={searchedProductList} />
 
       <StockFilter />
 
-      <ProductList products={productData} />
+      <ProductList products={searchedProductList} />
 
       <ProductCount />
-
     </div>
   );
 }
