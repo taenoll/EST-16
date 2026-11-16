@@ -4,6 +4,7 @@ import UserList from './components/UserList';
 import userData from '@/data/users.json';
 import UserSearchBox from './components/UserSearchBox';
 import InstantSearch from './components/InstantSearch';
+import UserListCount from './components/UserListCount';
 
 
 function UserPage() {
@@ -50,19 +51,12 @@ function UserPage() {
        
       />
 
-      <UserList users={searchedUserList}/>
+      <UserList users={searchedUserList} />
 
-      <div className="UserListCount">
-        <span className="text">
-          <span>검색 결과</span>
-          <span data-testid="user-list-count">
-            23 / <b>23</b>
-          </span>
-        </span>
-        <div className="bar">
-          <span style={{"--ratio":1} as CSSProperties}></span>
-        </div>
-      </div>
+      <UserListCount
+        userCount={searchedUserList.length}
+        totalUserCount={users.length}
+      />
 
 
     </div>
