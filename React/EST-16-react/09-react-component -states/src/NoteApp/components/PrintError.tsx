@@ -1,6 +1,12 @@
-function PrintError() {
+import './PrintError.css'
+
+
+function PrintError({children}:{children:string}) {
   return (
-    <div>PrintError</div>
+    <p role="alert" className='PrintError'>
+      {children}
+    </p>
   )
 }
+
 export default PrintError

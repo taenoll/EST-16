@@ -1,32 +1,37 @@
 import { getNoteItem } from '../api/getNote'
+import BackLink from '../components/BackLink';
+import PrintError from '../components/PrintError';
+import { ROUTES } from '../routes';
 import './NoteDetailPage.css'
-
-
 
 
 interface Props {
   noteId: number | null;
+  onChangeRoute:(nextRoute:string,pickNoteId:number) => void;
 }
 
-
-
-function NoteDetailPage({noteId}:Props) {
+function NoteDetailPage({noteId, onChangeRoute }:Props) {
 
   // noteId = null;
-  
 
-  if( !noteId ) return <p role="alert" className='printError'> ❌ 이런! 노트 정보를 불러오지 못했습니다! </p>;
+  if( !noteId ) return <PrintError> 이런! 노트를 찾을 수 없습니다. 🚫 </PrintError>
 
   const note = getNoteItem(noteId);
+
 
   const createMarkup = () => {
     if(!note) return;
     return {__html : note.content}
   }
 
+  const handleBackToList = () => onChangeRoute(ROUTES.list,0)
+
+  
+
   return (
     <div className='NoteDetailPage'>
-      {!note && <p role="alert" className='printError'> ❌ 이런! 노트 정보를 불러오지 못했습니다! </p>}
+      <BackLink onChangeRoute={handleBackToList} />
+      {!note && <PrintError> 이런! 노트를 찾을 수 없습니다. 🚫 </PrintError>}
       {
         note && (
           <>
