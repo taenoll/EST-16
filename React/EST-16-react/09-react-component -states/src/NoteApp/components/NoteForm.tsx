@@ -1,7 +1,8 @@
 import { useId, useState } from 'react';
 import './NoteForm.css';
-import { getUserList } from '../api/getUser';
+import { getUser, getUserList } from '../api/getUser';
 import type { Note } from '../api/getNote';
+import { convertHTMLToText, convertTextToHTMLString } from '@/utils/convertTextToHTMLString';
 
 
 interface FormData {
@@ -50,23 +51,63 @@ function NoteForm({onCreate, onBackLink, newNoteId}:Props) {
     }
     // computed property
     setFormData(nextFormData);
-    console.log( formData );
     
   }
 
+
+
+  // ⭐️⭐️⭐️
   // handleCreateNote 핸들러 함수 만들기
   // form에 핸들러 연결
   // handleCreateNote 안에서
   //  -> formData에서 필요한 값을 구조분해
   //  -> user의 항목 1개 가져오기 
   //  -> newNote 객체 만들기
+  //        -> content는 covertTextToHTMLString함수를 사용해서 
   //  -> 객체 값 조립
   //  -> onCreate에 완성된 객체 전달
   //  -> 목록으로 되돌아가기 
 
+  const handleCreateNote = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const { title, content, userId } = formData;
+
+
+    const newUserId = Number(userId) // select 값은 문자 -> 숫자 
+    const user = getUser(newUserId);
+
+    if(!user) return; // 작성자를 고르지 않으면 리턴
+    if(!newUserId) return;
+
+
+    const newNote = {
+      id: newNoteId,
+      title: title.trim(),
+      content: convertTextToHTMLString(content),
+      userId: newUserId,
+      createdAt:'',
+      updatedAt:'',
+      expand:{user}
+    }
+
+    onCreate(newNote);
+    onBackLink(); // 목록으로 되돌아가기
+    
+  }
+  
+
+  
+
+
+
   return (
     // reset 버튼은 DOM만 비움 -> 상태도 비워야 화면이 초기화가 됨
-    <form className="NoteForm" onReset={()=> setFormData({title:'',content:'',userId:0})}>
+    <form
+      className="NoteForm"
+      onSubmit={handleCreateNote}
+      onReset={()=> setFormData({title:'',content:'',userId:0})}
+    >
 
       <div className="formControl">
         <label htmlFor={titleId}>제목</label>

@@ -33,11 +33,13 @@ function NoteApp() {
   // 파생 상태: 새 노트의 id값 
   const newNoteId = list.length + 1;
 
+  const selectednote = list.find((item)=> item.id === routeInfo.noteId) ?? null;
+
   switch (routeInfo.route) {
     case ROUTES.list:
       return <NoteListPage list={list} onChangeRoute={handleChangeRoute}/>
     case ROUTES.detail:
-      return <NoteDetailPage noteId={routeInfo.noteId} onChangeRoute={handleChangeRoute}/>
+      return <NoteDetailPage note={selectednote} noteId={routeInfo.noteId} onChangeRoute={handleChangeRoute}/>
     case ROUTES.create:
       return <NoteCreatePage onCreate={handleCreateNote} newNoteId={newNoteId} onChangeRoute={handleChangeRoute}/>
     case ROUTES.edit:
