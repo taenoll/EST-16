@@ -1,19 +1,21 @@
-
-import type { Note } from '../api/getNote';
-import { convertSlug } from '@/utils/convertSlug';
+import './NoteList.css'
+import type { Note } from "../api/getNote";
+import { convertSlug } from "@/utils/convertSlug";
 import { ROUTES } from '../routes';
+
 
 interface Props {
   list: Note[];
-  onChangeRoute: (nextRoute: string, pickNoteId: number) => void;
+  onChangeRoute: (nextRoute:string, pickNoteId:number) => void;
 }
 
 function NoteList({ list, onChangeRoute }: Props) {
-  const handleClick = (pickNoteId: number) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    onChangeRoute(ROUTES.detail, pickNoteId);
-  };
 
+  const handleClick = (pickNoteId: number) => (e:React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    onChangeRoute(ROUTES.detail, pickNoteId)
+  }
+  
   return (
     <div className="NoteList">
       <h2>노트 필기 목록</h2>
@@ -23,9 +25,7 @@ function NoteList({ list, onChangeRoute }: Props) {
 
           return (
             <li key={item.id}>
-              <a href={slug} onClick={handleClick(item.id)}>
-                {item.title}
-              </a>
+              <a href={slug} onClick={handleClick(item.id)}>{item.title}</a>
             </li>
           );
         })}
@@ -33,5 +33,4 @@ function NoteList({ list, onChangeRoute }: Props) {
     </div>
   );
 }
-
 export default NoteList;
