@@ -10,7 +10,7 @@ const container = document.getElementById('react-app');
 if (container) {
   createRoot(container).render(
     <StrictMode>
-        <main>main</main>
+        {/* <main>main</main> */}
         <App />
     </StrictMode>
   );
