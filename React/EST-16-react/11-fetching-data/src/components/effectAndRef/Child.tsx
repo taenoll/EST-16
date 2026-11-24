@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 interface Props {
   message: string;
 }
@@ -8,4 +10,4 @@ function Child({ message }: Props) {
   );
 }
 
-export default Child;
+export default memo (Child);
