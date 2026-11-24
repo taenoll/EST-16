@@ -8,17 +8,22 @@ import supabase from '@/supabase/supabase';
 // products 테이블의 한 행에 해당하는 타입
 type ProductRow = Database['public']['Tables']['products']['Row'];
 
+
 function Product() {
   const [products, setProducts] = useState<ProductRow[]>([]);
 
   const UL = useRef<HTMLUListElement>(null);
-
+  
   // Supabase에서 상품 데이터 가져오기
   useEffect(() => {
+    let ignore = false;
+
     supabase
       .from('products')
       .select('*')
       .then(({ data, error }) => {
+        if (ignore) return;
+
         if (error) {
           console.error('상품 데이터 가져오기 실패', error);
           return;
@@ -26,7 +31,12 @@ function Product() {
 
         setProducts(data ?? []);
       });
+
+    return () => {
+      ignore = true;
+    };
   }, []);
+
 
   // 상품 목록 GSAP 애니메이션
   useEffect(() => {
