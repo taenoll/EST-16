@@ -1,8 +1,8 @@
-import { useRef } from 'react';
-import S from './Product.module.css'
-import gsap from 'gsap'
 import useProducts from '@/hook/useProducts';
 import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { useRef } from 'react';
+import S from './Product.module.css';
 
 function Product() {
 

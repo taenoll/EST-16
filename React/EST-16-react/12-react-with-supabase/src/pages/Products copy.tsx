@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import S from './Product.module.css';
 import gsap from 'gsap';
-import useProducts from '@/hook/useProduct';
+import useProducts from '@/hook/useProducts';
 
 function Product() {
   // 커스텀 훅에서 상품 데이터와 로딩 상태 가져오기
