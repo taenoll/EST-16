@@ -82,6 +82,7 @@ function Register() {
   }
 
   const handleAlertClose = () => {
+    setIsRegistered(false);
     history.pushState(null, '', '/login');
     location.reload();
   }
@@ -162,7 +163,7 @@ function Register() {
           }
         </div>
         <button type="submit">가입하기</button>
-        {error && ( <p style={{color:'red',marginTop:'1rem'}}>{error}</p> )}
+        {error && ( <p role="alert" style={{color:'#c62828',marginTop:'1rem'}}>{error}</p> )}
       </form>
 
       <Alert

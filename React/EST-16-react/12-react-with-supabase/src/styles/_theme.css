@@ -14,6 +14,8 @@
   --gray-900: #1F1F1F;
   --gray-950: #0d0d0e;
 
+  --point: #fd98af;
+
   --primary: var(--dark);
   --foreground: var(--gray-50);
   --background: var(--gray-800);

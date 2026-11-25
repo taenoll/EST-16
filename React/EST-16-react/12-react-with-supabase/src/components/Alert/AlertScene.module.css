@@ -1,0 +1,114 @@
+/* 시간(--delay, --duration, --count)은 AlertScene.tsx의 MOTION에서 넘어온다 */
+
+.scene {
+  --scene-line: var(--point);
+  --scene-panel: #0b0a0c;
+  --scene-line-width: 9;
+  --scene-smile-width: 6;
+
+  display: block;
+  width: 100%;
+  fill: none;
+  stroke: var(--scene-line);
+  stroke-width: var(--scene-line-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.panel {
+  fill: var(--scene-panel);
+  stroke: none;
+}
+
+.smile {
+  stroke-width: var(--scene-smile-width);
+}
+
+/* ---------- 움직임 ---------- */
+
+.draw,
+.drop,
+.squash,
+.beat {
+  animation-delay: var(--delay);
+  animation-duration: var(--duration);
+  animation-iteration-count: var(--count);
+  animation-fill-mode: backwards;
+}
+
+.draw {
+  stroke-dasharray: 1;
+  animation-name: draw;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.drop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-name: drop;
+  animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0.6);
+}
+
+/* 하트가 떨어져 담기는 순간 쇼핑백이 살짝 눌린다 */
+.squash {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation-name: squash;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.beat {
+  fill: var(--scene-line);
+  stroke: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-name: beat;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-90px) scale(0.6);
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+@keyframes squash {
+  35% {
+    transform: scale(1.06, 0.93);
+  }
+  70% {
+    transform: scale(0.98, 1.03);
+  }
+}
+
+@keyframes beat {
+  0%, 30%, 100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw,
+  .drop,
+  .squash,
+  .beat {
+    animation: none;
+  }
+}

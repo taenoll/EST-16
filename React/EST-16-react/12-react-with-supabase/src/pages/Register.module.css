@@ -37,7 +37,7 @@
     width: 40px;
     margin: -0.25rem auto 0.5rem;
     border: none;
-    border-top: 3px solid #FD98AF;
+    border-top: 3px solid var(--point);
   }
 
   label {
@@ -59,9 +59,9 @@
 
     &:focus {
       outline: none;
-      border-color: #FD98AF;
+      border-color: var(--point);
       background-color: white;
-      box-shadow: 0 0 0 4px rgba(253, 152, 175, 0.15);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--point) 15%, transparent);
     }
   }
 
@@ -85,7 +85,8 @@
     }
 
     &::file-selector-button:hover {
-      background-color: #FD98AF;
+      background-color: var(--point);
+      color: #111;
     }
   }
 
@@ -100,8 +101,8 @@
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid #FD98AF;
-    box-shadow: 0 0 0 4px white, 0 0 0 6px #FD98AF;
+    border: 1px solid var(--point);
+    box-shadow: 0 0 0 4px white, 0 0 0 6px var(--point);
   }
 
   button {
@@ -117,7 +118,8 @@
     transition: background-color 0.2s, transform 0.1s;
 
     &:hover {
-      background-color: #FD98AF;
+      background-color: var(--point);
+      color: #111;
     }
 
     &:active {

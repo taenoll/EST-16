@@ -45,7 +45,7 @@
           height: 4px;
           margin-top: 1.25rem;
           border-radius: 2px;
-          background-color: #FD98AF;
+          background-color: var(--point);
         }
       }
 

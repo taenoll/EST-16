@@ -3,12 +3,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 0 2rem 0 0;
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+ 
+  .greeting {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
 
   ul{
     display: flex;
     gap:2rem;
   
+  }
+
+  a{
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.2s;
+
+    &:hover{
+      color:#FD98AF;
+    }
   }
 }
 
@@ -16,14 +37,14 @@
 
 a.active{
   display: inline-block;
-  color:#fd98af;
+  color:#FD98AF;
   position: relative;
 
   &::before{
     content: '';
     width: 8px;
     height: 8px;
-    background-color: #fd98af;
+    background-color: #FD98AF;
     border-radius: 50%;
     position: absolute;
     left: -8px;
