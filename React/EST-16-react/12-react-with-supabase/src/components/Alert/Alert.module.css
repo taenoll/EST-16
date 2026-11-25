@@ -1,0 +1,234 @@
+.alert {
+  --pink: #fd98af;
+  --ink: #111;
+  --pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  box-sizing: border-box;
+  width: min(360px, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  overflow: hidden auto;
+  border: none;
+  border-radius: 24px;
+  background-color: white;
+  color: var(--ink);
+  font-family: Pretendard, system-ui, 'Malgun Gothic', sans-serif;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+
+  /* 닫힌 상태 (퇴장 애니메이션의 도착점) */
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition:
+    opacity 0.2s,
+    transform 0.4s var(--pop),
+    overlay 0.2s allow-discrete,
+    display 0.2s allow-discrete;
+
+  &::backdrop {
+    background-color: rgba(13, 13, 14, 0.55);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition:
+      opacity 0.2s,
+      overlay 0.2s allow-discrete,
+      display 0.2s allow-discrete;
+  }
+
+  &[open] {
+    opacity: 1;
+    transform: none;
+
+    &::backdrop {
+      opacity: 1;
+    }
+  }
+
+  /* display: none에서 막 나타날 때의 출발점 */
+  @starting-style {
+    &[open] {
+      opacity: 0;
+      transform: translateY(24px) scale(0.92);
+    }
+
+    &[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}
+
+/* ---------- 그림 ---------- */
+
+.scene {
+  display: block;
+  width: 100%;
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.panel {
+  fill: #0b0a0c;
+  stroke: none;
+}
+
+.smile {
+  stroke-width: 6;
+}
+
+/* pathLength={1} 덕분에 실제 길이와 상관없이 0~1로 선을 그릴 수 있다 */
+.smile,
+.body,
+.handle,
+.sparks path {
+  stroke-dasharray: 1;
+  animation: draw 0.6s var(--smooth) backwards;
+}
+
+.body {
+  animation-delay: 0.15s;
+}
+
+.handle {
+  animation-delay: 0.45s;
+  animation-duration: 0.45s;
+}
+
+.smile {
+  animation-delay: 0.1s;
+  animation-duration: 0.9s;
+}
+
+.sparks path {
+  animation-delay: 1.15s;
+  animation-duration: 0.35s;
+
+  &:nth-child(2) {
+    animation-delay: 1.21s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 1.27s;
+  }
+}
+
+/* 하트가 떨어져 담기는 순간 쇼핑백이 살짝 눌린다 */
+.bag {
+  transform-origin: 180px 157px;
+  animation: squash 0.45s 1s var(--smooth);
+}
+
+.heart {
+  fill: var(--pink);
+  stroke: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation:
+    drop 0.5s 0.7s cubic-bezier(0.5, 0, 0.75, 0.6) backwards,
+    beat 1.8s 1.9s ease-in-out infinite;
+}
+
+/* ---------- 글 ---------- */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.75rem 1.75rem;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+
+  button {
+    margin-top: 1.5rem;
+    padding: 0.95rem;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--ink);
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.1s;
+
+    &:hover {
+      background-color: var(--pink);
+      color: var(--ink);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--pink);
+      outline-offset: 3px;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+/* ---------- 움직임 ---------- */
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-90px) scale(0.6);
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+@keyframes squash {
+  35% {
+    transform: scale(1.06, 0.93);
+  }
+  70% {
+    transform: scale(0.98, 1.03);
+  }
+}
+
+@keyframes beat {
+  0%, 30%, 100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alert,
+  .alert::backdrop,
+  .alert * {
+    animation: none;
+    transition: none;
+  }
+}

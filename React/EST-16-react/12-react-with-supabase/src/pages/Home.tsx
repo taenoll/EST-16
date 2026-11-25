@@ -1,7 +1,7 @@
-import gsap from 'gsap';
-import S from './Home.module.css';
-import { useEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { useRef } from 'react';
+import S from './Home.module.css';
 
 
 function Home() {
