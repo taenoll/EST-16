@@ -2,6 +2,8 @@ import { routes } from '@/router/router';
 import S from './Header.module.css';
 import NavLink from '../NavLink';
 import { useAuth } from '../auth/AuthProvider';
+import { useEffect } from 'react';
+import { getAvatarUrl } from '@/api/getAvatarUrl';
 
 function Header() {
 
@@ -14,10 +16,22 @@ function Header() {
     ({title})=> !(isAuth && hideWhenLoggedIn.includes(title))
   )
 
-  // 로그아웃 버튼이 필요함  isAuth
-  // 그 버튼에 핸들러가 연결 동작 
-  // supabase의 signOut() 
-  // useAuth훅 업데이트 
+  useEffect(()=>{
+
+    const fetchAvatarUrl = async () => {
+      if(user){
+        const avatarUrl = await getAvatarUrl(user.id);
+
+        console.log( avatarUrl );
+        
+      }
+    }
+
+    fetchAvatarUrl()
+
+
+  },[user])
+
 
   return (
     <header className={S.header}>
