@@ -1,11 +1,11 @@
 
-import { useRef } from 'react';
+import { useContext, useRef, type MouseEvent } from 'react';
 import S from './Product.module.css';
 import gsap from 'gsap';
 import useProducts from '@/hook/useProducts';
 import { useGSAP } from '@gsap/react';
 import { useAuth } from '@/components/auth/AuthProvider';
-import NavLink from '@/components/NavLink';
+import { RouterContext } from '@/router/RouterProvider';
 
 function Product() {
 
@@ -14,6 +14,8 @@ function Product() {
   const { isAuth } = useAuth();
 
   const UL = useRef<HTMLUListElement>(null);
+
+  const { setHistoryRoute } = useContext(RouterContext)!;
 
   useGSAP(() => {
 
@@ -34,18 +36,21 @@ function Product() {
     revertOnUpdate: true
   });
 
-  if (loading) {
-    return <p className={S.loading}>loading.....</p>;
-  }
+  const handleRouter = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+
+    history.pushState(null, '', `/Product/${id}`);
+    setHistoryRoute(`/Product/${id}`);
+  };
+
+  if (loading) return <p className={S.loading}>loading.....</p>;
 
   if (!isAuth) {
     return (
       <div className={S.invalid}>
         <span style={{ fontSize: '10rem' }}>⚠️</span>
         <h3>상품 목록은 로그인 후 이용 가능합니다.</h3>
-        <NavLink to="/register">
-          살아? 아직도 효블리 회원이 아니세요??????
-        </NavLink>
+        <a href="">설마? 아직도 효블리 회원이 아니세요??????</a>
       </div>
     );
   }
@@ -57,7 +62,7 @@ function Product() {
           products &&
           products.map((item) => (
             <li key={item.id}>
-              <a href="/">
+              <a href={`/Product/${item.id}`} onClick={(e) => handleRouter(e, item.id)} >
                 <figure>
                   <img src={item.image_url} alt="" />
                 </figure>

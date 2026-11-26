@@ -2,37 +2,47 @@ import { routes } from '@/router/router';
 import S from './Header.module.css';
 import NavLink from '../NavLink';
 import { useAuth } from '../auth/AuthProvider';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getAvatarUrl } from '@/api/getAvatarUrl';
 
 function Header() {
-
   // routes
   const { user, isAuth, logout } = useAuth();
+  const [avatarUrl, setAvatarUrl] = useState<string|null>(null);
+  const [isAvatarLoaded, setIsAvatarLoaded] = useState(false);
 
   const hideWhenLoggedIn = ['로그인', '회원가입'];
 
+  const alwaysHidden = ['상품 상세 페이지'];
+
   const visibleRoutes = routes.filter(
-    ({title})=> !(isAuth && hideWhenLoggedIn.includes(title))
-  )
+    ({ title }) =>
+      !alwaysHidden.includes(title) &&
+      !(isAuth && hideWhenLoggedIn.includes(title))
+  );
+
 
   useEffect(()=>{
+    let ignore = false;
 
     const fetchAvatarUrl = async () => {
       if(user){
         const avatarUrl = await getAvatarUrl(user.id);
-
-        console.log( avatarUrl );
-        
+        if(ignore) return;
+        setAvatarUrl(avatarUrl)
+        setIsAvatarLoaded(true);
+      }else{
+        setAvatarUrl(null)
+        setIsAvatarLoaded(false);
       }
     }
+    fetchAvatarUrl();
 
-    fetchAvatarUrl()
-
+    return ()=> {
+      ignore = true;
+    }
 
   },[user])
-
-
   return (
     <header className={S.header}>
       <h1><img width={100} src="/logo-white.png" alt="" /></h1>
@@ -52,6 +62,20 @@ function Header() {
           {
             isAuth && (
               <li>
+                {
+                  isAvatarLoaded && (
+                    <img
+                      style={{
+                        width:'30px',
+                        position:'absolute',
+                        right:'1px',
+                        top:'1px'
+                      }}
+                      src={avatarUrl ?? '/vite.svg'}
+                      alt="" 
+                    />
+                  )
+                }
                 <a href="#"
                   onClick={(e)=>{
                     e.preventDefault();

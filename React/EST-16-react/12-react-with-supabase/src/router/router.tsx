@@ -11,7 +11,7 @@ export const routes = [
   },
   {
     title: '상품목록',
-    path: '/products',
+    path: '/products/:id',
     element: <Products />
   },
   {
