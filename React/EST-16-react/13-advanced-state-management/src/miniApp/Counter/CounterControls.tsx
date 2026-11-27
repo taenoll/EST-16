@@ -1,12 +1,17 @@
 import { memo } from 'react';
 import { useCountStore } from './@store';
+import { useShallow } from 'zustand/shallow';
 
 function CounterControls() {
 
-  const reset = useCountStore( s => s.reset );
+  // const reset = useCountStore( s => s.reset );
 
-  const step = 1;
-  const setStep = (_newStep: number) => {};
+  // const step = 1;
+  // const setStep = (_newStep: number) => {};
+  
+  const [step, reset, setStep] = useCountStore(
+    useShallow( s => [s.step, s.reset, s.setStep])
+  )
 
   return (
     <div className="flex gap-2 items-center">

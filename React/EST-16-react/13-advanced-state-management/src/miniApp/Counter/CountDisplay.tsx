@@ -2,25 +2,21 @@ import { memo } from 'react';
 import S from './style.module.css'
 import { useCountStore } from './@store';
 
-type Props = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> & {
-  type?: '+' | '-';
-};
+function CountDisplay() {
 
-function CountButton({ children, type = '+', ...restProps }: Props) {
+  // const count = 0;
+  // const { count } = useCountStore();
 
-  const handler = useCountStore((s)=>
-    type === '+'? s.increment : s.decrement
-  )
+
+  // selector 구독 방식
+  const count = useCountStore( s => s.count );
+
+  console.log(' counter display ');
+
 
   return (
-    <button
-      type="button"
-      className={S.button}
-      onClick={handler}
-      {...restProps}
-    >
-      {children}
-    </button>
+    <output className={S.output}>{count}</output>
   )
 }
-export default memo(CountButton)
+
+export default memo(CountDisplay)

@@ -5,13 +5,18 @@ import S from  './style.module.css';
 import { memo, useMemo } from 'react';
 import tw from '@/utils/tw';
 import { useCountStore } from './@store';
+import { useShallow } from 'zustand/shallow'
 
 function Counter({className}:{className?:string}) {
 
-  const count = useCountStore( s => s.count);
-  const step = useCountStore( s => s.step);
-  const min = useCountStore( s => s.min);
-  const max = useCountStore( s => s.max);
+  const [ count, step, min, max ] = useCountStore(
+    useShallow( s => [s.count, s.step, s.min, s.max])
+  )
+
+  // const count = useCountStore( s => s.count);
+  // const step = useCountStore( s => s.step);
+  // const min = useCountStore( s => s.min);
+  // const max = useCountStore( s => s.max);
 
   const incrementLabel = `${step} 증가`
   const decrementLabel = `${step} 감소`
