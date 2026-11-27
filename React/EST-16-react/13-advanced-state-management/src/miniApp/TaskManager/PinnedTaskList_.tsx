@@ -1,14 +1,28 @@
 import { PiPushPinFill, PiPushPinLight } from 'react-icons/pi';
 import tw from '@/utils/tw';
 import type { Task } from './@types';
+import { usePinnedTasks, useTaskStore } from './@store';
+import { useShallow } from 'zustand/shallow';
 
-interface Props {
-  pinnedTaskList: Task[];
-  setTask: (taskId: string, isCompleted: boolean) => void;
-  togglePin: (taskId: string) => void;
-}
+function PinnedTaskList() {
 
-function PinnedTaskList({ pinnedTaskList, setTask, togglePin }: Props) {
+
+  // const pinnedTaskList: Task[] = [];
+  // const togglePin = (_taskId: string) => {};
+  // const setTask = (_taskId: string, _isCompleted: boolean) => {};
+
+  // const tasks = useTaskStore( s => s.tasks )
+  // const pinnedTaskList = tasks.filter( t => t.isPin);
+  
+  // const togglePin = useTaskStore( s => s.togglePin);
+  // const setTask = useTaskStore( s => s.setTask);
+  
+  const pinnedTaskList = usePinnedTasks();
+
+  const { togglePin, setTask } = useTaskStore(useShallow((s)=> ({
+    togglePin:s.togglePin,
+    setTask:s.setTask
+  })))
 
   const handleSetTask = (taskId:string, isCompleted:boolean) => {
     setTask(taskId, isCompleted);
@@ -44,6 +58,5 @@ function PinnedTaskList({ pinnedTaskList, setTask, togglePin }: Props) {
     </ul>
   );
 }
-
 
 export default PinnedTaskList;

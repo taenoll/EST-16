@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useMemo, useReducer } from 'react';
 import taskReducer, {
   addTask,
   deleteTask,
@@ -32,19 +32,37 @@ export function TaskProvider(props: React.PropsWithChildren) {
   const [taskList, dispatch] = useReducer(taskReducer, INITIAL_TASKS);
 
   // 이벤트 핸들러(메서드)
-  const taskMethods: TaskMethods = {
-    addTask: (nextStep: string) => dispatch(addTask(nextStep)),
-    deleteTask: (deleteId: string) => dispatch(deleteTask(deleteId)),
-    setTask: (taskId: string, isCompleted: boolean) => dispatch(setTask(taskId, isCompleted)),
-    togglePin: (taskId: string) => dispatch(togglePin(taskId)),
-  };
-
+  const taskMethods = useMemo<TaskMethods>(() => {
+    const handleAddTask = (nextStep: string) => dispatch(addTask(nextStep));
+    const handleDeleteTask = (deleteId: string) => dispatch(deleteTask(deleteId));
+    const handleTogglePin = (taskId: string) => dispatch(togglePin(taskId));
+    const handleSetTask = (taskId: string, isCompleted: boolean) =>
+      dispatch(setTask(taskId, isCompleted));
+ 
+ 
+    return {
+      addTask: handleAddTask,
+      deleteTask: handleDeleteTask,
+      setTask: handleSetTask,
+      togglePin: handleTogglePin,
+    };
+  }, []); 
   // 파생된 상태
-  const pinnedTaskList = taskList.filter((task) => task.isPin);
-  const unpinnedTaskList = taskList.filter((task) => !task.isPin);
+
+  const { pinnedTaskList, unpinnedTaskList } = useMemo(() => {
+    return {
+      pinnedTaskList: taskList.filter((task) => task.isPin),
+      unpinnedTaskList: taskList.filter((task) => !task.isPin),
+    };
+  }, [taskList]);
+ 
+  const contextValue = useMemo(
+    () => ({ pinnedTaskList, unpinnedTaskList, methods: taskMethods }),
+    [pinnedTaskList, unpinnedTaskList, taskMethods]
+  );
 
   return (
-    <TaskContext value={{ pinnedTaskList, unpinnedTaskList, methods: taskMethods }} {...props} />
+    <TaskContext value={ contextValue } {...props} />
   );
 }
 

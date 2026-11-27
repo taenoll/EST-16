@@ -2,15 +2,33 @@ import { PiPushPinFill, PiPushPinLight } from 'react-icons/pi';
 import { RxCross1 } from 'react-icons/rx';
 import tw from '@/utils/tw';
 import type { Task } from './@types';
+import { useTaskStore, useUnpinnedTasks } from './@store';
+import { useShallow } from 'zustand/shallow';
 
-interface Props {
-  unpinnedTaskList: Task[];
-  setTask: (taskId: string, isCompleted: boolean) => void;
-  togglePin: (taskId: string) => void;
-  deleteTask: (deleteId: string) => void;
-}
+function UnpinnedTaskList() {
 
-function UnpinnedTaskList({ unpinnedTaskList, setTask, togglePin, deleteTask }: Props) {
+  // const unpinnedTaskList: Task[] = [];
+  // const deleteTask = (_deleteId: string) => {};
+  // const togglePin = (_taskId: string) => {};
+  // const setTask = (_taskId: string, _isCompleted: boolean) => {};
+
+  // const tasks = useTaskStore( s => s.tasks);
+  // const unpinnedTaskList = tasks.filter( t => !t.isPin);
+  
+  // const deleteTask = useTaskStore( s => s.deleteTask);
+  // const togglePin = useTaskStore( s => s.togglePin);
+  // const setTask = useTaskStore( s => s.setTask);
+  
+  const unpinnedTaskList = useUnpinnedTasks();
+
+
+  const {togglePin, setTask, deleteTask} = useTaskStore(useShallow((s)=>({
+    togglePin:s.togglePin,
+    setTask:s.setTask,
+    deleteTask:s.deleteTask
+  })))
+
+
 
   const handleSetTask = (taskId:string, isCompleted:boolean) => {
     setTask(taskId, isCompleted);
@@ -23,7 +41,6 @@ function UnpinnedTaskList({ unpinnedTaskList, setTask, togglePin, deleteTask }: 
   const handleDeleteTask = (deleteId:string) => {
     deleteTask(deleteId);
   };
-
 
   return (
     <ul className='flex flex-col gap-6'>
