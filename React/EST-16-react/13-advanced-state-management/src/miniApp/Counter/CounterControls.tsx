@@ -1,8 +1,9 @@
 import { memo } from 'react';
+import { useCountStore } from './@store';
 
 function CounterControls() {
 
-  const reset = () => {};
+  const reset = useCountStore( s => s.reset );
 
   const step = 1;
   const setStep = (_newStep: number) => {};
