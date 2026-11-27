@@ -5,6 +5,8 @@ export type Task = {
   isPin: boolean;
 };
 
+// 태스크 데이터
+
 export const INITIAL_TASKS: Task[] = [
   {
     id: '374f637e-d27f-4aa3-acb4-a76b76a31d51',
